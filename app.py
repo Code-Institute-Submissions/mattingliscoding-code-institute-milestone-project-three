@@ -18,8 +18,12 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_races")
-def get_races():
+def index():
+    return render_template("landing-page.html")
+
+
+@app.route("/srd_lookup")
+def srd_lookup():
     races = mongo.db.races.find()
     return render_template("srd-lookup.html", races=races)
 
