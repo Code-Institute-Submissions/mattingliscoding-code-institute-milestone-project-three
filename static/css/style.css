@@ -10,6 +10,10 @@ html {
     min-height: 100%;
 }
 
+.btn{
+    border: none;
+}
+
 body {
     margin-bottom: 60px; /* Margin bottom by footer height */
 }
@@ -37,6 +41,14 @@ body {
 .subnav{
     background-color: #363535;
     justify-content: center;
+}
+
+.flashes{
+    color: #f5f5f5;
+    margin: 0 auto;
+}
+.nav-item > p{
+    margin: 0;
 }
 
 .red-divider{
@@ -125,9 +137,13 @@ body {
 }
 /* SRD PAGE */
 
+.srd-list{
+    margin: 25px;
+}
+
 .srd-hero {
     color: white;
-    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/large-images/srd-hero-banner.jpg);
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/images/large-images/srd-hero-banner.jpg);
     background-position: center center; 
     background-repeat: no-repeat;
     background-size: cover;
@@ -135,20 +151,39 @@ body {
     width:100%; 
 }
 
-
-.srd-bg{
-    margin-top: 20px;
-    margin-right: 20px;
+.srd-container{
+    border-radius: 18px;
+    background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../assets/images/large-images/div-bg-texture.jpg);
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
 }
 
+.srd-body{
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/images/large-images/div-bg-texture.jpg);
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    
+}
 
-.srd-bg-image{
-    display:table-cell;
-    vertical-align:middle;
-    text-align:center;
-    position: absolute;
-    max-height: 80%;
-    height: auto;
+.srd-icon-container{
+    margin: 25px;
+    border-radius: 18px;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/images/large-images/fr-map.jpg);
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-blend-mode: saturation;
+}
+
+.srd-image{
+    height: 95%;
+    width: auto;
+    
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 
@@ -270,7 +305,7 @@ form{
 /* MEDIA QUERIES */
 
 @media (max-width: 1100px) {
-    .srd-bg{
+    .srd-image{
         display: none;
     }
 }

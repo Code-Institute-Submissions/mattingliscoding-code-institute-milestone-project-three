@@ -16,7 +16,9 @@
 		</div>
 	</section>
 
-
+    <section class="srd-body">
+    <div class="black-divider"></div>
+     
 	<div class="row" id="body-row">
 		<!-- Sidebar -->
 		<div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
@@ -117,13 +119,21 @@
 					<p>Darkvision - {{ race.darkvision }}</p>
                     <p>Racial Traits - {{ race.specific_traits }}</p>
 				</div>
-                <div class="srd-bg col-4"><img class="srd-bg-image" src="{{ race.icon }}"></div>
+                <div class="shadow card col-4 srd-icon-container">
+                    <div class="srd-image" style="background-image: url('{{ race.icon }}');"></div>
+                </div>
+                
+                
+                
             {% endfor %}
             </div>
 		</div>
 			
 		</div><!-- Main Col END -->
 	</div><!-- body-row END -->
+
+    </section>
+    <div class="red-divider"></div>
 
  
 {% endblock %}

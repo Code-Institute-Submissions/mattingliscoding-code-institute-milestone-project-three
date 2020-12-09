@@ -32,13 +32,31 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ url_for('srd_lookup') }}">5E SRD</a>
 				</li>
+                {% if session.user %}
                 <li class="nav-item">
 					<a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
 				</li>
+                {% endif %}
 			</ul>
+            <ul class="nav justify-content-center">
+                <li class="nav-item flashes">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                    <p>{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </li>
+            </ul>
 			<ul class="navbar-nav">
+                {% if session.user %}
                 <li class="nav-item">
-					<a class="btn nav-link" href="{{ url_for('login') }}">Login</a>
+					<a class="btn nav-link" href="{{ url_for('logout') }}">Log Out</a>
+				</li>
+                {% endif %}
+                <li class="nav-item">
+					<a class="btn nav-link" href="{{ url_for('login') }}">Log In</a>
 				</li>
                 <li class="nav-item">
 					<a class="btn nav-link red-button" href="{{ url_for('register') }}">Register</a>
@@ -49,10 +67,12 @@
     <div class="red-divider"></div>
 	
 
-	<main>
+   
+	<main>         
         {% block content %}
         {% endblock %}
 	</main>
+    
 
 
     
