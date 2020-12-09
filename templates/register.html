@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+<form class="mb-auto" method="POST" action="{{ url_for('register') }}">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Register</h1>
+                        <p class="text-h3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia. </p>
+                    </div>
+                </div>
+                <!-- USERNAME -->
+                <div class="row align-items-center">
+                    <div class="col mt-4">
+                        <input type="text" id="username" class="form-control validate" placeholder="Username" name="username" minlength="5"
+                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    </div>
+                </div>
+                <!-- EMAIL -->
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                </div>
+                <!-- PASSWORD -->
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <input id="password" name="password" type="password" minlength="5"
+                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control validate" placeholder="Password" required>
+                    </div>
+                </div>
+            
+                <div class="row justify-content-center mt-4">
+                    <div class="col-s-12">
+                        <button class="btn red-button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
