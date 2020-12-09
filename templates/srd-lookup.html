@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <section class="jumbotron jumbotron-fluid index-hero">
+    <section class="jumbotron jumbotron-fluid srd-hero">
 		<div class="container-fluid">
 			<div class="cta">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -15,16 +15,115 @@
 			</div>
 		</div>
 	</section>
-    
-	<div class="row srd-content">
-		<div class="container shadow card">
-            <ul id="races">
-            {% for race in races %}
-                <li class="name">{{ race.dwarf_name }}</li>
-                <li class="asi">{{ race.dwarf_asi }}</li>
+
+
+	<div class="row" id="body-row">
+		<!-- Sidebar -->
+		<div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+			<!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+			<!-- Bootstrap List Group -->
+			<ul class="list-group">
+				<!-- Separator with title -->
+				<li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+					<small>MAIN MENU</small>
+				</li>
+				<!-- /END Separator -->
+				<!-- Menu with submenu -->
+				<a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+					class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+					<div class="d-flex w-100 justify-content-start align-items-center">
+						<span class="fa fa-dashboard fa-fw mr-3"></span>
+						<span class="menu-collapsed">Races</span>
+						<span class="fa fa-caret-down ml-auto"></span>
+					</div>
+				</a>
+				<!-- Submenu content -->
+				<div id="submenu1" class="collapse sidebar-submenu">
+					<a href="{{ url_for('dwarf_lookup') }}" class="list-group-item list-group-item-action bg-dark text-white">
+						<span class="menu-collapsed">Dwarf</span>
+					</a>
+					<a href="{{ url_for('halfling_lookup') }}" class="list-group-item list-group-item-action bg-dark text-white">
+						<span class="menu-collapsed">Halfling</span>
+					</a>
+                    <a href="{{ url_for('dragonborn_lookup') }}" class="list-group-item list-group-item-action bg-dark text-white">
+						<span class="menu-collapsed">Dragonborn</span>
+					</a>
+				</div>
+				<a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+					class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+					<div class="d-flex w-100 justify-content-start align-items-center">
+						<span class="fa fa-user fa-fw mr-3"></span>
+						<span class="menu-collapsed">Profile</span>
+						<span class="fa fa-caret-down ml-auto"></span>
+					</div>
+				</a>
+				<!-- Submenu content -->
+				<div id="submenu2" class="collapse sidebar-submenu">
+					<a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+						<span class="menu-collapsed">Settings</span>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+						<span class="menu-collapsed">Password</span>
+					</a>
+				</div>
+				<a href="#" class="bg-dark list-group-item list-group-item-action">
+					<div class="d-flex w-100 justify-content-start align-items-center">
+						<span class="fa fa-tasks fa-fw mr-3"></span>
+						<span class="menu-collapsed">Tasks</span>
+					</div>
+				</a>
+				<!-- Separator with title -->
+				<li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+					<small>OPTIONS</small>
+				</li>
+				<!-- /END Separator -->
+				<a href="#top" data-toggle="sidebar-colapse"
+					class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+					<div class="d-flex w-100 justify-content-start align-items-center">
+						<span id="collapse-icon" class="fa fa-2x mr-3"></span>
+						<span id="collapse-text" class="menu-collapsed">Collapse</span>
+					</div>
+				</a>
+			</ul><!-- List Group END-->
+		</div><!-- sidebar-container END -->
+		<!-- MAIN -->
+		<div class="col p-4">
+			<ul>
+				<li class="nav-item dropdown d-sm-block d-md-none">
+					<a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Menu </a>
+					<div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+						<a class="dropdown-item" href="#top">hjsahgjsa</a>
+						<a class="dropdown-item" href="#top">Profile</a>
+						<a class="dropdown-item" href="#top">Tasks</a>
+						<a class="dropdown-item" href="#top">Etc ...</a>
+					</div>
+				</li>
+			</ul>
+
+        
+        <!-- IMGUR LINK FETCHED FROM DB FOR CARD BACKGROUND -->
+		<div class="container shadow card srd-container">
+            <div class="row">
+            {% for race in races %}	
+				<div class="srd-list col-md col-l-8">
+					<h1 class="display-4">{{ race.name }}</h1>
+					<p>Traits - {{ race.traits }}</p>
+					<p>Ability Score Improvement - {{ race.asi }}</p>
+					<p>Age - {{ race.age }}</p>
+					<p>Alignment - {{ race.alignment }}</p>
+					<p>Size - {{ race.size }}</p>
+					<p>Speed - {{ race.speed }}</p>
+					<p>Darkvision - {{ race.darkvision }}</p>
+                    <p>Racial Traits - {{ race.specific_traits }}</p>
+				</div>
+                <div class="srd-bg col-4"><img class="srd-bg-image" src="{{ race.icon }}"></div>
             {% endfor %}
-            </ul>
+            </div>
 		</div>
-	</div>
+			
+		</div><!-- Main Col END -->
+	</div><!-- body-row END -->
+
  
 {% endblock %}

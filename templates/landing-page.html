@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 {% block content %}
-
+    <!-- JUMBOTRON -->
 	<section class="jumbotron jumbotron-fluid index-hero">
 		<div class="container-fluid">
 			<div class="cta">
@@ -10,10 +10,71 @@
 					<p>This is a template for a simple marketing or informational website. It includes a large callout
 						called the hero unit and three supporting pieces of content. Use it as a starting point to create
 						something more unique.</p>
-                    <button type="button" class="btn btn-secondary btn-lg">Join Up!</button>
+                    <button type="button" class="join-button btn btn-lg">Join Up!</button>
 				</div>
 			</div>
 		</div>
 	</section>
+    <div class="black-divider"></div>
+    <!-- FEATURE CONTAINER 1 -->
+    <section class="container-fluid">
+        <div class="row feature-one pt-4 pb-4">
+            <div class="col-md-4 offset-md-2 feature-one-img">
+            </div>
+            <div class="col-md-4 feature-one-text">
+                <h3>Features!</h3>
+                <p>We have a bunch of cool features available blah blah blah here are some of them! Heres a bit more blah blah blha hgsfggfs fsgfgf!</p>
+                <ul type="circle">
+                    <li>D&D 5th Edition Database Lookup!</li>
+                    <li>Profile with campaign to-do list & notes area</li>
+                    <li>Blah blh fgjfjkdg</li>
+                    <li>Blah blh bahahf prfd kdg</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="black-divider"></div>
+
+    <!-- FEATURE CONTAINER 2 -->
+    <section class="container-fluid">
+        <div class="row feature-two mt-4 mb-4">
+            <div class="col-md-8 offset-md-2">
+                    <h3>Dungeon Club! - Campaign Helper</h3>
+					<p>This is a template for a simple marketing or informational website. It includes a large callout
+						called the hero unit and three supporting pieces of content. Use it as a starting point to create
+						something more unique.</p>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 feature-cards">
+                <div class="col mb-4">
+                    <div class="card h-100">
+                    <img src="static/assets/images/small-images/card-thumb-one.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card h-100">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
  
 {% endblock %}

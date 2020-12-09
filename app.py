@@ -24,8 +24,28 @@ def index():
 
 @app.route("/srd_lookup")
 def srd_lookup():
-    races = mongo.db.races.find()
-    return render_template("srd-lookup.html", races=races)
+    return render_template("srd-lookup.html")
+
+
+@app.route("/dwarf_lookup")
+def dwarf_lookup():
+    return render_template("srd-lookup.html",
+                           races=mongo.db.races.find(
+                            {"name": "Dwarf"}))
+
+
+@app.route("/halfling-lookup")
+def halfling_lookup():
+    return render_template("srd-lookup.html",
+                           races=mongo.db.races.find(
+                            {"name": "Halfling"}))
+
+
+@app.route("/dragonborn-lookup")
+def dragonborn_lookup():
+    return render_template("srd-lookup.html",
+                           races=mongo.db.races.find(
+                            {"name": "Dragonborn"}))
 
 
 if __name__ == "__main__":
