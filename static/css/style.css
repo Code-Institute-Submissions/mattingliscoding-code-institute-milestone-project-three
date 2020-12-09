@@ -217,7 +217,18 @@ body {
   text-align: right;
   padding-left: 10px;
 }
+/* LOGIN PAGE */
 
+
+
+.user-auth-link {
+    color: #f5f5f5;
+    text-decoration: underline;
+}
+.user-auth-link:hover{
+    color: grey;
+    text-decoration: none;
+}
 
 /* REGISTER PAGE */
 .sign-up-container{
