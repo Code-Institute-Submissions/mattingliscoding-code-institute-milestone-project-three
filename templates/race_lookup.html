@@ -34,27 +34,25 @@
 				<a href="#submenu1" data-toggle="collapse" aria-expanded="false"
 					class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
 					<div class="d-flex w-100 justify-content-start align-items-center">
-						<span class="fa fa-dashboard fa-fw mr-3"></span>
 						<span class="menu-collapsed">Races</span>
 						<span class="fa fa-caret-down ml-auto"></span>
 					</div>
 				</a>
 				<!-- Submenu content -->
 				<div id="submenu1" class="collapse sidebar-submenu">
-					<a href="{{ url_for('dwarf_lookup') }}" class="list-group-item list-group-item-action bg-dark text-white">
+					<a href="{{ url_for('race_lookup', name='Dwarf') }}" class="list-group-item list-group-item-action bg-dark text-white">
 						<span class="menu-collapsed">Dwarf</span>
 					</a>
-					<a href="{{ url_for('halfling_lookup') }}" class="list-group-item list-group-item-action bg-dark text-white">
+					<a href="{{ url_for('race_lookup', name='Halfling') }}" class="list-group-item list-group-item-action bg-dark text-white">
 						<span class="menu-collapsed">Halfling</span>
 					</a>
-                    <a href="{{ url_for('dragonborn_lookup') }}" class="list-group-item list-group-item-action bg-dark text-white">
+                    <a href="{{ url_for('race_lookup', name='Dragonborn') }}" class="list-group-item list-group-item-action bg-dark text-white">
 						<span class="menu-collapsed">Dragonborn</span>
 					</a>
 				</div>
 				<a href="#submenu2" data-toggle="collapse" aria-expanded="false"
 					class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
 					<div class="d-flex w-100 justify-content-start align-items-center">
-						<span class="fa fa-user fa-fw mr-3"></span>
 						<span class="menu-collapsed">Profile</span>
 						<span class="fa fa-caret-down ml-auto"></span>
 					</div>
@@ -70,7 +68,6 @@
 				</div>
 				<a href="#" class="bg-dark list-group-item list-group-item-action">
 					<div class="d-flex w-100 justify-content-start align-items-center">
-						<span class="fa fa-tasks fa-fw mr-3"></span>
 						<span class="menu-collapsed">Tasks</span>
 					</div>
 				</a>
@@ -89,25 +86,38 @@
 			</ul><!-- List Group END-->
 		</div><!-- sidebar-container END -->
 		<!-- MAIN -->
-		<div class="col p-4">
+		<div class="small-device-menu col p-4">
 			<ul>
-				<li class="nav-item dropdown d-sm-block d-md-none">
+				<li class="nav-item navbar-dark dropdown d-sm-block d-md-none">
 					<a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> Menu </a>
+						aria-expanded="false">Menu</a>
+
 					<div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
-						<a class="dropdown-item" href="#top">hjsahgjsa</a>
-						<a class="dropdown-item" href="#top">Profile</a>
-						<a class="dropdown-item" href="#top">Tasks</a>
-						<a class="dropdown-item" href="#top">Etc ...</a>
+						<a class="nav-link dropdown-toggle" href="#" id="racemenu" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Races</a>
+                            <div class="dropdown-menu dropdown" aria-labelledby="smallerscreenmenu">
+                            <a class="dropdown-item " href="{{ url_for('race_lookup', name='Dwarf') }}">Dwarf</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Halfling') }}">Halfling</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Dragonborn') }}">Dragonborn</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Dwarf') }}">Etc ...</a>
+                            </div>
+                        <a class="nav-link dropdown-toggle" href="#" id="classmenu" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Classes</a>
+                        <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                            <a class="dropdown-item " href="{{ url_for('race_lookup', name='Dwarf') }}">Dwarf</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Halfling') }}">Halfling</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Dragonborn') }}">Dragonborn</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Dwarf') }}">Etc ...</a>
+                            </div>
 					</div>
+                    
 				</li>
 			</ul>
 
-        
         <!-- IMGUR LINK FETCHED FROM DB FOR CARD BACKGROUND -->
 		<div class="container shadow card srd-container">
             <div class="row">
-            {% for race in races %}	
+            {% for race in races %}
 				<div class="srd-list col-md col-l-8">
 					<h1 class="display-4">{{ race.name }}</h1>
 					<p>Traits - {{ race.traits }}</p>
@@ -117,14 +127,25 @@
 					<p>Size - {{ race.size }}</p>
 					<p>Speed - {{ race.speed }}</p>
 					<p>Darkvision - {{ race.darkvision }}</p>
-                    <p>Racial Traits - {{ race.specific_traits }}</p>
+                    <!-- {% if race in races %}
+                        <p>Racial Traits - {{ race.specific_traits }}</p>
+                    {% endif %} -->
 				</div>
                 <div class="shadow card col-4 srd-icon-container">
                     <div class="srd-image" style="background-image: url('{{ race.icon }}');"></div>
                 </div>
-                
-                
-                
+            {% else %} 
+                <div class="srd-list col-md col-l-8">
+                    <h1 class="display-4">Races</h1>
+					<p>Traits - The description of each race includes racial traits that are common to members of that race. The following entries appear among the traits of most races.</p>
+					<p>Ability Score Improvement - Every race increases one or more of a character's ability scores.</p>
+					<p>Age - The age entry notes the age when a member of the race is considered an adult, as well as the race's expected lifespan. This information can help you decide how old your character is at the start of the game. You can choose any age for your character, which could provide an explanation for some of your ability scores. For example, if you play a young or very old character, your age could explain a particularly low Strength or Constitution score, while advanced age could account for a high Intelligence or Wisdom.</p>
+					<p>Alignment - Most races have tendencies toward certain alignments, described in this entry. These are not binding for player characters, but considering why your dwarf is chaotic, for example, in defiance of lawful dwarf society can help you better define your character.</p>
+					<p>Size - Characters of most races are Medium, a size category including creatures that are roughly 4 to 8 feet tall. Members of a few races are Small (between 2 and 4 feet tall), which means that certain rules of the game affect them differently. The most important of these rules is that Small characters have trouble wielding heavy weapons.</p>
+					<p>Speed - Your speed determines how far you can move when traveling and fighting.</p>
+                    <p>Languages - By virtue of your race, your character can speak, read, and write certain languages.</p>
+					<p>Darkvision - Darkvision is the extraordinary ability to see with no light source at all, out to a range specified for the creature. Darkvision is black and white only (colors cannot be discerned). It does not allow characters to see anything that they could not see otherwise—invisible objects are still invisible, and illusions are still visible as what they seem to be. Likewise, darkvision subjects a creature to gaze attacks normally. The presence of light does not spoil darkvision.</p>
+                </div>
             {% endfor %}
             </div>
 		</div>
