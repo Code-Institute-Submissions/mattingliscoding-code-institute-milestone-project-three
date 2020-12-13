@@ -2,15 +2,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-<body class="sign-up-container">
-    <form method="POST" action="{{ url_for('register') }}">
+<div class="sign-up-container">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                    <form method="POST" action="{{ url_for('register') }}">
                     <div class="row">
                         <div class="col text-center">
                             <h1>Register</h1>
-                            <p>Already a member? Head <a class="-link" href="{{ url_for('login') }}">here</a> to login!
+                            <p>Already a member? Head <a class="user-auth-link" href="{{ url_for('login') }}">here</a> to login!
                             </p>
                             <p>Please note, usernames and passwords must be between 5/15 characters in length, and alphanumeric only!</p>
                         </div>
@@ -35,6 +35,7 @@
                             <button class="btn red-button">Submit</button>
                         </div>
                     </div>
+                    </form>
                     <!-- FLASH MESSAGES -->
                     <div>
                         {% with messages = get_flashed_messages() %}
@@ -50,11 +51,8 @@
                 </div>
             </div>
         </div>
-        
-    </form>
+</div>
 
-    
 
-</body>
 
 {% endblock %}

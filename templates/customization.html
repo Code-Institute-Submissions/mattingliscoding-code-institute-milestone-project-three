@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- LOOKUP CONTAINER POPULATED FROM WITH PYMONGO -->
+{% extends "lookup.html" %} {% block article %}
+<div class="container shadow card lookup-container">
+    <div class="row">
+        <div class="lookup-list col-md col-l-8">
+            <h3 class="display-4 fancy_font">Customization</h3>
+            <h5 class="strong">Multiclassing</h5>
+            <p>Multiclassing allows you to gain levels in multiple classes. Doing so lets you mix the abilities of those classes to realize a character concept that might not be reflected in one of the standard class options.
+            <br>
+            <br>
+            With this rule, you have the option of gaining a level in a new class whenever you advance in level, instead of gaining a level in your current class. Your levels in all your classes are added together to determine your character level. For example, if you have three levels in wizard and two in fighter, you're a 5th-level character.
+            <br>
+            <br>
+            As you advance in levels, you might primarily remain a member of your original class with just a few levels in another class, or you might change course entirely, never looking back at the class you left behind. You might even start progressing in a third or fourth class. Compared to a single-class character of the same level, you'll sacrifice some focus in exchange for versatility.
+            </p>
+            <h5 class="strong">Multiclassing Prerequisites + Table</h5>
+            <p>To qualify for a new class, you must meet the ability score prerequisites for both your current class and your new one, as shown in the Multiclassing Prerequisites table. For example, a barbarian who decides to multiclass into the druid class must have both Strength and Wisdom scores of 13 or higher. Without the full training that a beginning character receives, you must be a quick study in your new class, having a natural aptitude that is reflected by higher- than-average ability scores.
+            </p>
+            <table style="width:50%">
+                <tr>
+                    <th>Class</th>
+                    <th>Ability Score Min.</th>
+                </tr>
+                <tr>
+                    <td>Barbarian</td>
+                    <td>Strength: 13</td>
+                </tr>
+                <tr>
+                    <td>Bard</td>
+                    <td>Charisma: 13</td>
+                </tr>
+                <tr>
+                    <td>Cleric</td>
+                    <td>Wisdom: 13</td>
+                </tr>
+                <tr>
+                    <td>Druid</td>
+                    <td>Wisdom: 13</td>
+                </tr>
+                <tr>
+                    <td>Fighter</td>
+                    <td>Strength: 13 or Dexterity: 13</td>
+                </tr>
+                <tr>
+                    <td>Monk</td>
+                    <td>Dexterity: 13 and Wisdom: 13</td>
+                </tr>
+                <tr>
+                    <td>Paladin</td>
+                    <td>Strength: 13 and Charisma: 13</td>
+                </tr>
+                <tr>
+                    <td>Ranger</td>
+                    <td>Dexterity: 13 and Wisdom: 13</td>
+                </tr>
+                <tr>
+                    <td>Rogue</td>
+                    <td>Dexterity: 13</td>
+                </tr>
+                <tr>
+                    <td>Sorcerer</td>
+                    <td>Charisma: 13</td>
+                </tr>
+                <tr>
+                    <td>Warlock</td>
+                    <td>Charisma: 13</td>
+                </tr>
+                <tr>
+                    <td>Wizard</td>
+                    <td>Intelligence: 13</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

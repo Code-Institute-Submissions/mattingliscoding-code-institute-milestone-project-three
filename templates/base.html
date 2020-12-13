@@ -8,9 +8,10 @@
 	<meta name="Description" content="Enter your description here" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,500;1,700&display=swap"
-		rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
@@ -19,7 +20,7 @@
 
 <body>
 	<nav class="main-nav navbar navbar-expand-lg navbar-dark">
-		<a class="navbar-brand" href="{{ url_for('index') }}">DC LOGO</a>
+		<a class="navbar-brand fancy_font" href="{{ url_for('index') }}">DUNGEON CLUB</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -30,7 +31,7 @@
 					<a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url_for('race_lookup') }}">5E SRD</a>
+					<a class="nav-link" href="{{ url_for('lookup') }}">5E SRD</a>
 				</li>
                 {% if session.user %}
                 <li class="nav-item">
@@ -71,13 +72,13 @@
 	<main>         
         {% block content %}
         {% endblock %}
-	</main>
-    
+    </main>
 
 
+
     
-    <section class="footer">
-    <div class="red-divider"></div>
+    <!-- <div class="footer">
+        <div class="red-divider"></div>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark row text-align-center">
                 <ul class="navbar-nav nav col justify-content-center">
@@ -93,7 +94,7 @@
                     </li>
                     {% endif %}
                 </ul>
-                <h1 class="navbar-brand nav-item hide">DC LOGO</h1>
+                <h1 class="navbar-brand nav-item fancy_font">DUNGEON CLUB</h1>
                 <ul class="navbar-nav nav col justify-content-center">
                     {% if session.user %}
                     <li class="nav-item">
@@ -108,19 +109,74 @@
                     </li>
                 </ul>
             </nav>
-            <div class="footer-divider col-8 offset-2 justify-content-center hide"></div>
-            <nav class="navbar navbar-expand-lg navbar-dark row">
-                <ul class="navbar-nav nav col justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">SRD Copyright</a>
+            <div class="footer-divider col-8 offset-2 justify-content-center"></div>
+            <div class="col">
+                <a class="nav-link" href="{{ url_for('index') }}">SRD Copyright</a>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="footer">
+        <div class="red-divider"></div>
+        <div class="navbar">
+            <a class="col-sm-4 footer-brand hind-title hvr-shrink" href="#">Back to Top</a>
+            <h1 class="navbar-brand fancy_font">DUNGEON CLUB</h1>
+            <ul class="navbar-nav nav col justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('race_lookup') }}">5E SRD</a>
+                </li>
+                {% if session.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav nav col justify-content-center">
+                {% if session.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                </li>
+            </ul>
+            <div class="col-sm-4">
+                <ul class="list-inline social-links">
+                    <li class="list-inline-item hvr-shrink">
+                        <a href="https://www.facebook.com" target="_blank">
+                            <i class="fab fa-facebook" aria-hidden="true"></i>
+                            <span class="sr-only">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item hvr-shrink">
+                        <a href="https://www.twitter.com" target="_blank">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                            <span class="sr-only">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item hvr-shrink">
+                        <a href="https://www.Instagram.com" target="_blank">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item hvr-shrink">
+                        <a href="https://www.youtube.com" target="_blank">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                            <span class="sr-only">YouTube</span>
+                        </a>
                     </li>
                 </ul>
-            </nav>
+            </div>
         </div>
-    </section>
-
-    
-
+    </div>
 
 
 

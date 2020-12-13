@@ -94,33 +94,41 @@ def logout():
     return redirect(url_for("login"))
 
 
+# LOOKUP HOME ROUTE
+@app.route("/lookup")
+def lookup():
+    return render_template("lookup.html")
+
+
+# ROUTES FOR DB COLLECTIONS
 @app.route("/race_lookup")
 def race_lookup():
     race_name = request.args.get('name')
     races = mongo.db.races.find({"name": race_name})
-    return render_template("race_lookup.html",
+    return render_template("lookup.html",
                            races=races)
 
 
-# @app.route("/dwarf_lookup")
-# def dwarf_lookup():
-#     return render_template("srd-lookup.html",
-#                            races=mongo.db.races.find(
-#                             {"name": "Dwarf"}))
+@app.route("/class_lookup")
+def class_lookup():
+    class_name = request.args.get('name')
+    classes = mongo.db.classes.find({"name": class_name})
+    return render_template("lookup.html",
+                           classes=classes)
 
 
-# @app.route("/halfling-lookup")
-# def halfling_lookup():
-#     return render_template("srd-lookup.html",
-#                            races=mongo.db.races.find(
-#                             {"name": "Halfling"}))
+@app.route("/spell_lookup")
+def spell_lookup():
+    spell_name = request.args.get('name')
+    spells = mongo.db.spells.find({"name": spell_name})
+    return render_template("lookup.html",
+                           spells=spells)
 
 
-# @app.route("/dragonborn-lookup")
-# def dragonborn_lookup():
-#     return render_template("srd-lookup.html",
-#                            races=mongo.db.races.find(
-#                             {"name": "Dragonborn"}))
+@app.route("/article_lookup")
+def article_lookup():
+    article_name = request.args.get('name')
+    return render_template(article_name + ".html")
 
 
 if __name__ == "__main__":

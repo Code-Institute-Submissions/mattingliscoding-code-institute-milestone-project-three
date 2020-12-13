@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+
+<section class="jumbotron jumbotron-fluid lookup-hero">
+    <div class="container-fluid">
+        <div class="cta">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3 class="fancy_font">Dungeon Club! - Campaign Helper</h3>
+                <p>This is a template for a simple marketing or informational website. It includes a large callout
+                    called the hero unit and three supporting pieces of content. Use it as a starting point to create
+                    something more unique.</p>
+                <button type="button" class="btn btn-secondary btn-lg">Join Up!</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lookup-body">
+    <div class="black-divider"></div>
+
+    <div class="row" id="body-row">
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+            <ul class="list-group">
+                <!-- SEPARATOR -->
+                <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                    <small class="fancy_font">BROWSE</small>
+                </li>
+
+                <!-- RACES -->
+                <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+                    class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="menu-collapsed">Races</span>
+                        <span class="fa fa-caret-down ml-auto"></span>
+                    </div>
+                </a>
+                <!-- RACES SUBMENU -->
+                <div id="submenu1" class="collapse races-menu">
+                    <a href="{{ url_for('race_lookup', name='Race Basics') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Race Basics</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Dragonborn') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Dragonborn</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Dwarf') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Dwarf</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Elf') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Elf</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Gnome') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Gnome</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Half-Elf') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Half-Elf</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Halfling') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Halfling</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Half-Orc') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Half-Orc</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Human') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Human</span>
+                    </a>
+                    <a href="{{ url_for('race_lookup', name='Tiefling') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Tiefling</span>
+                    </a>
+                </div>
+
+                <!-- CLASSES -->
+                <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+                    class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="menu-collapsed">Classes</span>
+                        <span class="fa fa-caret-down ml-auto"></span>
+                    </div>
+                </a>
+                <!-- CLASSES SUBMENU -->
+                <div id="submenu2" class="collapse">
+                    <a href="{{ url_for('class_lookup', name='Barbarian') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Barbarian</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Bard') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Bard</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Cleric') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Cleric</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Druid') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Druid</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Fighter') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Fighter</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Monk') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Monk</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Paladin') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Paladin</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Ranger') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Ranger</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Rogue') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Rogue</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Sorcerer') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Sorcerer</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Warlock') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Warlock</span>
+                    </a>
+                    <a href="{{ url_for('class_lookup', name='Wizard') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Wizard</span>
+                    </a>
+                </div>
+
+
+                <!-- SPELLS MENU -->
+                <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
+                    class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="menu-collapsed">Spells</span>
+                        <span class="fa fa-caret-down ml-auto"></span>
+                    </div>
+                </a>
+                <!-- SPELLS SUBMENUS -->
+                <div id="submenu3" class="collapse spells-menu">
+
+                    <a href="#cantrips" data-toggle="collapse" aria-expanded="false"
+                        class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-collapsed">Cantrips</span>
+                            <span class="fa fa-caret-down ml-auto"></span>
+                        </div>
+                    </a>
+
+                    <div id="cantrips" class="collapse spells-menu">
+                    <a href="{{ url_for('spell_lookup', name='Acid Splash') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Acid Splash</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Blade Ward') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Blade Ward</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Chill Touch') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Chill Touch</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Dancing Lights') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Dancing Lights</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Druidcraft') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Druidcraft</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Eldritch Blast') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Eldritch Blast</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Fire Bolt') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Fire Bolt</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Friends') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Friends</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Guidance') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Guidance</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Light') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Light</span>
+                    </a>
+                    </div>
+
+                    <a href="#level_one" data-toggle="collapse" aria-expanded="false"
+                        class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-collapsed">1st Level</span>
+                            <span class="fa fa-caret-down ml-auto"></span>
+                        </div>
+                    </a>
+
+                    <div id="level_one" class="collapse spells-menu">
+                    <a href="{{ url_for('spell_lookup', name='Alarm') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Alarm</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Animal Friendship') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Animal Friendship</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Bane') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Bane</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Bless') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Bless</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Burning Hands') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Burning Hands</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Charm Person') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Charm Person</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Color Spray') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Color Spray</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Command') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Command</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Comprehend Languages') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Comprehend Languages</span>
+                    </a>
+                    <a href="{{ url_for('spell_lookup', name='Create or Destroy Water') }}"
+                        class="list-group-item list-group-item-action  text-white">
+                        <span class="menu-collapsed">Create or Destroy Water</span>
+                    </a>
+
+                    </div>
+
+
+                </div>
+
+                
+
+                <a href="{{ url_for('article_lookup', name='customization') }}"
+                    class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="menu-collapsed">Customization</span>
+
+                    </div>
+                </a>
+
+            </ul>
+        </div>
+
+        <!-- MAIN AREA -->
+        <div class="col p-4">
+            <!-- RESPONSIVE MENU -->
+            <ul class="small-device-menu">
+                <li class="nav-item navbar-dark dropdown d-sm-block d-md-none">
+                    <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Menu</a>
+
+                    <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="racemenu" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Races</a>
+                        <div class="dropdown-menu dropdown" aria-labelledby="racemenu">
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Race Basics') }}">Race
+                                Basics</a>
+                            <a class="dropdown-item"
+                                href="{{ url_for('race_lookup', name='Dragonborn') }}">Dragonborn</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Dwarf') }}">Dwarf</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Elf') }}">Elf</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Gnome') }}">Gnome</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Half-Elf') }}">Half-Elf</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Halfling') }}">Halfling</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Half-Orc') }}">Half-Orc</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Human') }}">Human</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Tiefling') }}">Tiefling</a>
+                        </div>
+
+                        <a class="nav-link dropdown-toggle" href="#" id="classmenu" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Classes</a>
+                        <div class="dropdown-menu" aria-labelledby="classmenu">
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Dwarf') }}">Dwarf</a>
+                            <a class="dropdown-item" href="{{ url_for('race_lookup', name='Halfling') }}">Halfling</a>
+                            <a class="dropdown-item"
+                                href="{{ url_for('race_lookup', name='Dragonborn') }}">Dragonborn</a>
+                        </div>
+
+                        <a class="nav-link dropdown-toggle" href="#" id="spellmenu" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Spells</a>
+                        <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                            <a class="nav-link dropdown-toggle" href="#" id="spell-level-menu" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Cantrips</a>
+                        </div>
+
+                    </div>
+
+                </li>
+            </ul>
+
+            <!-- LOOKUP CONTAINER POPULATED WITH PYMONGO -->
+            <div class="container shadow card lookup-container">
+                <div class="row">
+                    {% for race in races %}
+                    <div class="lookup-list col-md col-l-8">
+                        <h3 class="display-4 fancy_font">{{ race.name }}</h3>
+                        <p><strong>Traits - </strong>{{ race.traits }}</p>
+                        <p><strong>Ability Score Improvement -</strong> {{ race.asi }}</p>
+                        <p><strong>Age -</strong> {{ race.age }}</p>
+                        <p><strong>Alignment -</strong> {{ race.alignment }}</p>
+                        <p><strong>Size -</strong> {{ race.size }}</p>
+                        <p><strong>Speed -</strong> {{ race.speed }}</p>
+                        <p><strong>Languages -</strong> {{ race.languages }}</p>
+                    </div>
+                    <div class="shadow card col-4 lookup-icon-container">
+                        <!-- IMGUR LINK FETCHED FROM DB FOR CARD BACKGROUND -->
+                        <div class="lookup-image" style="background-image: url('{{ race.icon }}');"></div>
+                    </div>
+                    {% endfor %}
+
+                    {% for spell in spells %}
+                    <div class="lookup-list col-md col-l-8">
+                        <h3 class="display-4 fancy_font">{{ spell.name }}</h3>
+                        <p><strong>School -</strong> {{ spell.school }}</p>
+                        <p><strong>Spell Level -</strong> {{ spell.level }}</p>
+                        <p><strong>Casting Time -</strong> {{ spell.casting_time }}</p>
+                        <p><strong>Range -</strong> {{ spell.range }}</p>
+                        <p><strong>Components -</strong> {{ spell.components }}</p>
+                        <p><strong>Duration -</strong> {{ spell.duration }}</p>
+                        <p><strong>Classes -</strong> {{ spell.classes }}</p>
+                        <p><strong>Description -</strong> {{ spell.description }}</p>
+                        <p><strong>Higher Level Casting -</strong> {{ spell.higher_level }}</p>
+                    </div>
+
+                    {% endfor %}
+
+                    {% for class in classes %}
+                    <div class="lookup-list col-md col-l-8">
+                        <h3 class="display-4 fancy_font">{{ class.name }}</h3>
+                        <h5><strong>Class Features</strong></h5>
+                        <p>As a <strong>{{ class.name }}</strong>, you gain the following class features</p>
+                        <h5><strong>Hit Points</strong></h5>
+                        <p><strong>Hit Dice -</strong> {{ class.hit_dice }}</p>
+                        <p><strong>Hit Points at 1st Level -</strong> {{ class.level1_hp }}</p>
+                        <p><strong>Hit Points at Higher Levels -</strong> {{ class.higher_hp }}</p>
+                        <h5><strong>Proficiences</strong></h5>
+                        <p><strong>Armor -</strong> {{ class.armor_prof }}</p>
+                        <p><strong>Weapons -</strong> {{ class.weapons_prof }}</p>
+                        <p><strong>Tools -</strong> {{ class.tools_prof }}</p>
+                        <p><strong>Saving Throws -</strong> {{ class.saving_throws }}</p>
+                        <p><strong>Skills -</strong> {{ class.skills }}</p>
+                        <h5>For all extra details and progression tables, head <a class="class_link"
+                                href="{{ class.link }}">here!</a>←</h5>
+                    </div>
+                    <div class="shadow card col-4 lookup-icon-container">
+                        <!-- IMGUR LINK FETCHED FROM DB FOR CARD BACKGROUND -->
+                        <div class="lookup-image" style="background-image: url('{{ class.icon }}');"></div>
+                    </div>
+
+
+                    <!-- ARTICLE TEMPLATE FUNCTION -->
+                    {% endfor %}
+                    {% block article %}
+                    {% endblock %}
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </div><!-- body-row END -->
+</section>
+
+{% endblock %}

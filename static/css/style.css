@@ -1,30 +1,35 @@
 /* BASE TEMPLATE STYLES */
 
-body{
-    font-family: 'Ubuntu', sans-serif;
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
+.fancy_font{
+    font-family: 'Crimson Text', serif;
+}
+
+.heading{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
 }
 
 .btn{
     border: none;
 }
 
-body {
-    margin-bottom: 200px; /* Margin bottom by footer height */
-    
-}
 
 .footer {
     background-color: #000;
     position: absolute;
-    bottom: 0;
     width: 100%;
-    min-height: 200px; /* Set the fixed height of the footer here */
+    min-height: 100px;
     
+}
+
+.card{
+    border: none;
 }
 
 .footer nav{
@@ -89,7 +94,7 @@ body {
     background-position: center center; 
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 350px;  
+    min-height: 300px;  
     width:100%; 
 }
 
@@ -99,6 +104,7 @@ body {
 }
 
 .cta{
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
     justify-content: center;
     text-align: center;
     padding-left: 10%;
@@ -116,22 +122,24 @@ body {
 
 
 .feature-one{
+    margin-left: 12%;
+    margin-right: 12%;
     min-height: 300px;
     width: auto;
-    background-color: #f5f5f5;
 }
 
 .feature-one-img{
-    border-radius: 18px;
+    border-radius: 3px;
     background: url(../assets/images/small-images/feature-one-thumbnail.jpg);
     background-position: center center; 
     background-repeat: no-repeat;
     background-size: cover;
-    height: auto%;
+    min-height: 200px;
     width: auto;
 }
 
 .feature-one-text{
+    margin-top: 1rem;
     text-align:center;
     height: 100%;
     width: auto;
@@ -144,26 +152,28 @@ body {
 }
 
 .feature-cards{
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 12%;
+    margin-right: 12%;
 }
-/* SRD PAGE */
+/* LOOKUP PAGE */
 
-.srd-list{
+
+
+.lookup-list{
     margin: 25px;
 }
 
-.srd-hero {
+.lookup-hero {
     color: white;
-    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/images/large-images/srd-hero-banner.jpg);
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/large-images/lookup-banner.jpg);
     background-position: center center; 
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 350px;  
+    min-height: 300px;  
     width:100%; 
 }
 
-.srd-container{
+.lookup-container{
     border-radius: 18px;
     background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../assets/images/large-images/div-bg-texture.jpg);
     background-position: center center; 
@@ -171,7 +181,8 @@ body {
     background-size: cover; 
 }
 
-.srd-body{
+.lookup-body{
+    min-height: 400px;
     background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/images/large-images/div-bg-texture.jpg);
     background-position: center center; 
     background-repeat: no-repeat;
@@ -179,7 +190,7 @@ body {
     
 }
 
-.srd-icon-container{
+.lookup-icon-container{
     margin: 25px;
     border-radius: 18px;
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/images/large-images/fr-map.jpg);
@@ -189,7 +200,7 @@ body {
     background-blend-mode: saturation;
 }
 
-.srd-image{
+.lookup-image{
     height: 95%;
     width: auto;
     
@@ -198,18 +209,29 @@ body {
     background-size: contain;
 }
 
+.class_link{
+    text-decoration: underline;
+}
 
-/* SIDEBAR */
+
+table, th, td {
+    padding: 7px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+/* LOOKUP SIDEBAR */
 
 #body-row {
     margin-left:0;
     margin-right:0;
 }
 #sidebar-container {
-     
+    min-height: 400px;
     background-color: #333;
     padding: 0;
 }
+
 
 /* Sidebar sizes when expanded and expanded */
 .sidebar-expanded {
@@ -220,6 +242,18 @@ body {
 }
 
 /* Menu item*/
+.list-group-item,
+.list-group-item-action{
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+    background-color: #5b0000;
+}
+
+.list-group-item-action:focus,
+.list-group-item-action:hover{
+    background-color: #360000;
+}
+
+
 #sidebar-container .list-group a {
     height: 50px;
     color: white;
@@ -230,10 +264,6 @@ body {
     height: 45px;
     padding-left: 30px;
 }
-.sidebar-submenu {
-    font-size: 0.9rem;
-}
-
 /* Separators */
 .sidebar-separator-title {
     background-color: #333;
@@ -272,7 +302,6 @@ body {
 /* LOGIN PAGE */
 
 
-
 .user-auth-link {
     color: #f5f5f5;
     text-decoration: underline;
@@ -288,11 +317,14 @@ body {
     background-position: center center; 
     background-repeat: no-repeat;
     background-size: cover;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+   
 }
 
 form{
+    margin-top: 150px;
+    margin-bottom: 60%;
     color: #f5f5f5;
-    margin-top: 100px;
     text-align: center;
 }
 
@@ -304,48 +336,38 @@ form{
     margin: auto;
 }
 
-.bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+/* PROFILE PAGE */
+
+.profile-hero{
+    color: white;
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url(../assets/images/large-images/profile-banner.jpg);
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 250px;  
+    width:100%;
+}
+
+
 
 /* MEDIA QUERIES */
 
 @media (max-width: 1100px) {
-    .srd-image,
-    .srd-icon-container{
+    .lookup-image,
+    .lookup-icon-container{
         display: none;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .hide {
         display: none;
     }
+    
 }
 
-@media (max-width: 405px) {
-    body {
-    margin-bottom: 300px; /* Margin bottom by footer height */
-    
-    }
-}
-@media (max-width: 350px) {
-    body {
-    margin-bottom: 330px; /* Margin bottom by footer height */
-    
-    }
-}
+
 
 
 
