@@ -79,11 +79,49 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    quests = list(mongo.db.quests.find())
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template(
+            "profile.html", quests=quests, username=username)
 
     return redirect(url_for("login"))
+
+
+@app.route("/add_quest", methods=["GET", "POST"])
+def add_quest():
+    quest = {
+        "quest_name": request.form.get("quest_name"),
+        "description": request.form.get("quest_description"),
+        "rewards": request.form.get("rewards"),
+        "created_by": session["user"]
+    }
+    mongo.db.quests.insert_one(quest)
+    flash("Quest Successfully Added!")
+    return redirect(url_for("get_quests"))
+
+
+@app.route("/add_quest/<quest_id>", methods=["GET", "POST"])
+def edit_quest(quest_id):
+    if request.method == "POST":
+        submit = {
+            "quest_name": request.form.get("quest_name"),
+            "description": request.form.get("quest_description"),
+            "rewards": request.form.get("rewards"),
+            "created_by": session["user"]
+        }
+        mongo.db.quests.update({"_id": ObjectId(quest_id)}, submit)
+        flash("Quest Successfully Updated!")
+
+    quest = mongo.db.quests.find_one({"_id": ObjectId(quest_id)})
+    return render_template("profile.html", quest=quest)
+
+
+@app.route("/delete_quest/<quest_id>")
+def delete_quest(quest_id):
+    mongo.db.quests.remove({"_id": ObjectId(quest_id)})
+    flash("Quest Successfully Deleted!")
+    return redirect(url_for("get_quests"))
 
 
 @app.route("/logout")
