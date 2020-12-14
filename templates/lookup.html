@@ -6,19 +6,15 @@
     <div class="container-fluid">
         <div class="cta">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3 class="fancy_font">Dungeon Club! - Campaign Helper</h3>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout
-                    called the hero unit and three supporting pieces of content. Use it as a starting point to create
-                    something more unique.</p>
-                <button type="button" class="btn btn-secondary btn-lg">Join Up!</button>
+                <h3 class="fancy_font">Dungeons And Dragons 5th Edition SRD Database</h3>
+                <p>Looking to settle a table dispute on Sneak Attack rules? Need the damage dice for that new 3rd level spell you've just got? We've made it easy for you as a player or DM to quickly locate anything you might need from the base rule-set of D&D 5E. For more information on the 5E SRD, click <a class="user-auth-link" href="">here.</a></p>
             </div>
         </div>
     </div>
 </section>
+<div class="black-divider"></div>
 
 <section class="lookup-body">
-    <div class="black-divider"></div>
-
     <div class="row" id="body-row">
         <!-- Sidebar -->
         <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
@@ -33,7 +29,7 @@
                     class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="menu-collapsed">Races</span>
-                        <span class="fa fa-caret-down ml-auto"></span>
+                        <span class="fas fa-angle-down ml-auto"></span>
                     </div>
                 </a>
                 <!-- RACES SUBMENU -->
@@ -85,7 +81,7 @@
                     class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="menu-collapsed">Classes</span>
-                        <span class="fa fa-caret-down ml-auto"></span>
+                        <span class="fas fa-angle-down ml-auto"></span>
                     </div>
                 </a>
                 <!-- CLASSES SUBMENU -->
@@ -146,7 +142,7 @@
                     class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="menu-collapsed">Spells</span>
-                        <span class="fa fa-caret-down ml-auto"></span>
+                        <span class="fas fa-angle-down ml-auto"></span>
                     </div>
                 </a>
                 <!-- SPELLS SUBMENUS -->
@@ -156,7 +152,7 @@
                         class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="menu-collapsed">Cantrips</span>
-                            <span class="fa fa-caret-down ml-auto"></span>
+                            <span class="fas fa-angle-down ml-auto"></span>
                         </div>
                     </a>
 
@@ -207,7 +203,7 @@
                         class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="menu-collapsed">1st Level</span>
-                            <span class="fa fa-caret-down ml-auto"></span>
+                            <span class="fas fa-angle-down ml-auto"></span>
                         </div>
                     </a>
 
@@ -320,7 +316,7 @@
             </ul>
 
             <!-- LOOKUP CONTAINER POPULATED WITH PYMONGO -->
-            <div class="container shadow card lookup-container">
+            <div class="container shadow card lookup-container" style="border: none;">
                 <div class="row">
                     {% for race in races %}
                     <div class="lookup-list col-md col-l-8">
@@ -333,7 +329,7 @@
                         <p><strong>Speed -</strong> {{ race.speed }}</p>
                         <p><strong>Languages -</strong> {{ race.languages }}</p>
                     </div>
-                    <div class="shadow card col-4 lookup-icon-container">
+                    <div class="shadow card col-4 lookup-icon-container" style="border: none;">
                         <!-- IMGUR LINK FETCHED FROM DB FOR CARD BACKGROUND -->
                         <div class="lookup-image" style="background-image: url('{{ race.icon }}');"></div>
                     </div>
@@ -373,7 +369,7 @@
                         <h5>For all extra details and progression tables, head <a class="class_link"
                                 href="{{ class.link }}">here!</a>←</h5>
                     </div>
-                    <div class="shadow card col-4 lookup-icon-container">
+                    <div class="shadow card col-4 lookup-icon-container" style="border: none;">
                         <!-- IMGUR LINK FETCHED FROM DB FOR CARD BACKGROUND -->
                         <div class="lookup-image" style="background-image: url('{{ class.icon }}');"></div>
                     </div>

@@ -1,9 +1,15 @@
 /* BASE TEMPLATE STYLES */
-
-html, body{
+body, html{
+    height: 100%;
     margin: 0;
     padding: 0;
-    height: 100%;
+}
+
+.container-fluid{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .fancy_font{
@@ -20,38 +26,7 @@ html, body{
 }
 
 
-.footer {
-    background-color: #000;
-    position: absolute;
-    width: 100%;
-    min-height: 100px;
-    
-}
-
-.card{
-    border: none;
-}
-
-.footer nav{
-    margin-top: 20px;
-    margin-left: 100px;
-    margin-right: 100px;
-    text-align: center;
-}
-
-.footer-divider{
-    background-color: white;
-    height: 2px;
-}
-
-.container-fluid{
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.main-nav{
+.navbar{
     background-color: #000;
 }
 
@@ -80,10 +55,10 @@ html, body{
 }
 
 .red-button{
-    background-color: #8e0101;
+    border: 1px solid #8e0101;
+    border-radius: 10px;
     color: #fff;
 }
-
 
 
 
@@ -139,8 +114,6 @@ html, body{
 }
 
 .feature-one-text{
-    margin-top: 1rem;
-    text-align:center;
     height: 100%;
     width: auto;
 }
@@ -157,6 +130,14 @@ html, body{
 }
 /* LOOKUP PAGE */
 
+.lookup-body{
+    min-height: 450px;
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/images/large-images/div-bg-texture.jpg);
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    
+}
 
 
 .lookup-list{
@@ -179,15 +160,6 @@ html, body{
     background-position: center center; 
     background-repeat: no-repeat;
     background-size: cover; 
-}
-
-.lookup-body{
-    min-height: 400px;
-    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/images/large-images/div-bg-texture.jpg);
-    background-position: center center; 
-    background-repeat: no-repeat;
-    background-size: cover; 
-    
 }
 
 .lookup-icon-container{
@@ -227,7 +199,7 @@ table, th, td {
     margin-right:0;
 }
 #sidebar-container {
-    min-height: 400px;
+    min-height: 450px;
     background-color: #333;
     padding: 0;
 }
@@ -318,7 +290,7 @@ table, th, td {
     background-repeat: no-repeat;
     background-size: cover;
     text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
-   
+    height: 100vh;
 }
 
 form{
@@ -348,6 +320,18 @@ form{
     min-height: 250px;  
     width:100%;
 }
+
+.profile-intro{
+    margin-left: 12%;
+    margin-right: 12%;
+    width: auto;
+}
+
+.quest-wrapper{
+    margin-bottom: 200px;
+    
+}
+
 
 
 

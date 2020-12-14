@@ -6,42 +6,49 @@
     <div class="container-fluid">
         <div class="cta">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3 class="fancy_font">{{username}}'s profile</h3>
+                <h1 class="fancy_font">Welcome, {{username}}!</h1>
             </div>
         </div>
     </div>
 </section>
 <div class="black-divider"></div>
 
-<div id="accordion">
-    {% for quest in quests %} 
+<section class="container profile-intro">
+    <div class="row pt-4 pb-4">
+        <div class="col feature-one-text">
+            <h3 class="fancy_font">Your D&D Homepage</h3>
+            <p>Every D&D player knows the pain of losing track of quest threads and NPC side-quests. Now you can use your profile page to keep a close eye on your progress! Never again will you lose out on that 50 gold that random farmer promised you and your cronies for curbing those pesky Gnolls raiding the town. Sweet! At a glance, look up the minutiae of that spell that you forgot about, or maybe save your poor, beleaguered DM some time and swot up on your rules knowledge with our 5th Edition SRD database. We'll also keep you loaded with handy links to amazing D&D tools and resources that we've curated from the wilderness of the internet, so you don't have to!</p>
+        </div>
+    </div>
+</section>
+<div class="black-divider"></div>
+
+
+<section class="quest-wrapper container pt-4 pb-4 ">
+    <div class="shadow" id="accordion">
+        {% for quest in quests %}
         {% if session.user|lower == quest.created_by|lower %}
-        
         <div class="card">
-            <div class="card-header" id="headingOne">
+            <div class="card-header" id="questTop">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                        aria-controls="collapseOne">
-                        <strong>{{ quest.quest_name }}</strong> <i class="fa fa-caret-down"></i>
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#target{{quest._id}}" aria-controls="target{{quest._id}}" aria-expanded="false">
+                        <strong>{{ quest.quest_name }} </strong><i class="fas fa-angle-down"></i>
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="target{{quest._id}}" class="collapse" aria-labelledby="questTop" data-parent="#accordion" aria-expanded="false">
                 <div class="card-body">
-                    <p>
-                        Description : {{ quest.quest_description }}
-                    </p>
-                    <p>
-                        Rewards : {{ quest.quest_rewards }}
-                    </p>
+                    <p>Description : {{ quest.quest_description }}</p>
+                    <p>Rewards : {{ quest.rewards }}</p>
+                    <small>Created by : {{ quest.created_by }}</small>
                 </div>
             </div>
         </div>
-        {% endif %}
+    {% endif %}
     {% endfor %}
+    </div>
+    
 
-</div>
-
-
+</section>
 {% endblock %}
