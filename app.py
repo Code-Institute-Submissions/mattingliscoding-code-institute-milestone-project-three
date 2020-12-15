@@ -84,44 +84,46 @@ def profile(username):
     if session["user"]:
         return render_template(
             "profile.html", quests=quests, username=username)
-
     return redirect(url_for("login"))
 
 
 @app.route("/add_quest", methods=["GET", "POST"])
 def add_quest():
-    quest = {
-        "quest_name": request.form.get("quest_name"),
-        "description": request.form.get("quest_description"),
-        "rewards": request.form.get("rewards"),
-        "created_by": session["user"]
-    }
-    mongo.db.quests.insert_one(quest)
-    flash("Quest Successfully Added!")
-    return redirect(url_for("get_quests"))
+    if request.method == "POST":
+        quest = {
+            "quest_name": request.form.get("quest_name"),
+            "quest_description": request.form.get("quest_description"),
+            "quest_rewards": request.form.get("quest_rewards"),
+            "created_by": session["user"]
+        }
+        mongo.db.quests.insert_one(quest)
+        flash("Task Successfully Added!")
+        return redirect(url_for("profile", username=session["user"]))
+
+    return render_template("add_quest.html")
 
 
 @app.route("/add_quest/<quest_id>", methods=["GET", "POST"])
 def edit_quest(quest_id):
     if request.method == "POST":
-        submit = {
+        quest = {
             "quest_name": request.form.get("quest_name"),
-            "description": request.form.get("quest_description"),
-            "rewards": request.form.get("rewards"),
+            "quest_description": request.form.get("quest_description"),
+            "quest_rewards": request.form.get("rewards"),
             "created_by": session["user"]
         }
-        mongo.db.quests.update({"_id": ObjectId(quest_id)}, submit)
+        mongo.db.quests.update({"_id": ObjectId(quest_id)}, quest)
         flash("Quest Successfully Updated!")
 
     quest = mongo.db.quests.find_one({"_id": ObjectId(quest_id)})
-    return render_template("profile.html", quest=quest)
+    return redirect(url_for("profile", username=session["user"]))
 
 
-@app.route("/delete_quest/<quest_id>")
-def delete_quest(quest_id):
-    mongo.db.quests.remove({"_id": ObjectId(quest_id)})
-    flash("Quest Successfully Deleted!")
-    return redirect(url_for("get_quests"))
+# @app.route("/delete_quest/<quest_id>")
+# def delete_quest(quest_id):
+#     mongo.db.quests.remove({"_id": ObjectId(quest_id)})
+#     flash("Quest Successfully Deleted!")
+#     return redirect(url_for("get_quests"))
 
 
 @app.route("/logout")

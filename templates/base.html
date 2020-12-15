@@ -51,14 +51,14 @@
 			<ul class="navbar-nav">
                 {% if session.user %}
                 <li class="nav-item">
-					<a class="btn nav-link" href="{{ url_for('logout') }}">Log Out</a>
+					<a class="btn nav-link log-button" href="{{ url_for('logout') }}">Log Out</a>
 				</li>
                 {% endif %}
                 <li class="nav-item">
-					<a class="btn nav-link" href="{{ url_for('login') }}">Log In</a>
+					<a class="btn nav-link log-button" href="{{ url_for('login') }}">Log In</a>
 				</li>
                 <li class="nav-item">
-					<a class="btn nav-link red-button" href="{{ url_for('register') }}">Register</a>
+					<a class="btn nav-link reg-button" href="{{ url_for('register') }}">Register</a>
 				</li>
             </ul>
 		</div>

@@ -25,9 +25,16 @@ body, html{
     border: none;
 }
 
-
 .navbar{
     background-color: #000;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.8);
+}
+
+.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover{
+    color: rgba(170, 0, 0, 0.75);
 }
 
 .subnav{
@@ -53,10 +60,23 @@ body, html{
     width: 100%;
     background-color: #000;
 }
+.page-divider{
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.205);
+    width: 50%;
+    margin-left: 25%;
+}
 
-.red-button{
+.log-button{
+    color: #fff;
+    border: none;
+}
+
+.reg-button{
+    position: relative;
+    bottom: 1px;
     border: 1px solid #8e0101;
-    border-radius: 10px;
+    border-radius: 5px;
     color: #fff;
 }
 
@@ -293,7 +313,7 @@ table, th, td {
     height: 100vh;
 }
 
-form{
+.user-auth-form{
     margin-top: 150px;
     margin-bottom: 60%;
     color: #f5f5f5;
@@ -317,21 +337,42 @@ form{
     background-position: center center; 
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 250px;  
+    min-height: 1 50px;  
     width:100%;
 }
 
 .profile-intro{
     margin-left: 12%;
-    margin-right: 12%;
+    margin-right: 12%; 
     width: auto;
 }
 
 .quest-wrapper{
     margin-bottom: 200px;
+    border-radius: 8px;
+    background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../assets/images/large-images/div-bg-texture.jpg);
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
     
 }
 
+.form-item{
+    background-color: #ffffff6b;
+}
+
+.quest-wrapper i{
+    margin-left: 10px;
+}
+
+.quest-button{
+    margin: 0;
+    background-color: #8e0101;
+    color: white;
+}
+.quest-card{
+    background-color: #ffffff6b;
+}
 
 
 
