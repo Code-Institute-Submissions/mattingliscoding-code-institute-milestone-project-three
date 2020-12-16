@@ -310,7 +310,7 @@
                 <div class="row">
                     {% for race in races %}
                     <div class="lookup-list col-md col-l-8">
-                        <h3 class="display-4 fancy-font">{{ race.name }}</h3>
+                        <h1 class="fancy-font">{{ race.name }}</h1>
                         <p><strong>Traits - </strong>{{ race.traits }}</p>
                         <p><strong>Ability Score Improvement -</strong> {{ race.asi }}</p>
                         <p><strong>Age -</strong> {{ race.age }}</p>
@@ -325,7 +325,7 @@
                     </div>
                     {% endfor %} {% for spell in spells %}
                     <div class="lookup-list col-md col-l-8">
-                        <h3 class="display-4 fancy-font">{{ spell.name }}</h3>
+                        <h1 class="fancy-font">{{ spell.name }}</h1>
                         <p><strong>School -</strong> {{ spell.school }}</p>
                         <p><strong>Spell Level -</strong> {{ spell.level }}</p>
                         <p><strong>Casting Time -</strong> {{ spell.casting_time }}</p>
@@ -339,7 +339,7 @@
 
                     {% endfor %} {% for class in classes %}
                     <div class="lookup-list col-md col-l-8">
-                        <h3 class="display-4 fancy-font">{{ class.name }}</h3>
+                        <h1 class="fancy-font">{{ class.name }}</h1>
                         <h5><strong>Class Features</strong></h5>
                         <p>As a <strong>{{ class.name }}</strong>, you gain the following class features</p>
                         <h5><strong>Hit Points</strong></h5>

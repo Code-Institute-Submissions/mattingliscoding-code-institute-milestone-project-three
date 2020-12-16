@@ -414,7 +414,7 @@ td {
 @media (max-width: 480px) {
     .sidebar-expanded {
         
-        max-width: 200px;
+        max-width: 300px;
     }
 }
 
