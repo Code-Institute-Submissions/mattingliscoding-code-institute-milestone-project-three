@@ -29,20 +29,31 @@ main{
     border: none;
 }
 
+
+
+.navbar-brand:hover,
+.navbar-brand:focus{
+    color: rgba(170, 0, 0, 0.75);
+}
+
 .navbar{
     background-color: #000;
 }
-.navbar-dark .navbar-nav .nav-link {
+.navbar-nav .nav-link {
     color: rgba(255,255,255,.8);
 }
 
-.navbar-dark .navbar-nav .nav-link:focus,
-.navbar-dark .navbar-nav{
+.navbar-nav .nav-link:focus,
+.navbar-nav{
     color: rgba(170, 0, 0, 0.75);
 }
 
 .nav-link:hover{
     color: rgba(170, 0, 0, 0.75);
+}
+
+.header-links{
+    color: grey;
 }
 
 .subnav{

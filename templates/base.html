@@ -26,7 +26,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 	
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse header-links" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<a class="nav-link" href="{{ url_for('lookup') }}">5th Edition SRD</a>
@@ -43,10 +43,10 @@
 			<ul class="navbar-nav">
                 {% if session.user %}
                 <li class="nav-item">
-					<a class="btn nav-link log-button" href="{{ url_for('logout') }}">Log Out</a>
+					<a class="nav-link log-button" href="{{ url_for('logout') }}">Log Out</a>
                 </li>
                 <li class="nav-item">
-					<a class="btn nav-link log-button" href="{{ url_for('delete_account', username=session['user']) }}">Delete Account</a>
+					<a class="nav-link log-button" href="{{ url_for('delete_account', username=session['user']) }}">Delete Account</a>
                 </li>
                 {% endif %}
                 {% if session.user == null %}
