@@ -124,6 +124,8 @@ Articles and images linked on Dungeon Club Homepage:
 * https://io9.gizmodo.com/joe-manganiello-takes-the-internets-toughest-and-most-f-1845873249
 * https://arstechnica.com/gaming/2020/12/dungeons-dragons-linked-to-new-movie-starring-chris-pine/
 
+Some additional Google Image searching was required for the card images on the Resources page, however the majority was simply the image file hosted on the Amazon listing for the product.
+
 
 
 
