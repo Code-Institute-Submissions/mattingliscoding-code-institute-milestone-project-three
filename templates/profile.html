@@ -17,7 +17,7 @@
     <div class="row pt-4 pb-4">
         <div class="col">
             <h3 class="fancy-font">Your D&D Homepage</h3>
-            <p>Every D&D player knows the pain of losing track of quest threads and NPC side-quests. Now you can use your profile page to keep a close eye on your progress! Never again will you lose out on that 50 gold that random farmer promised you and your cronies for curbing those pesky Gnolls raiding the town. Sweet! At a glance, look up the minutiae of that spell that you forgot about, or maybe save your poor, beleaguered DM some time and swot up on your rules knowledge with our 5th Edition SRD database. We'll also keep you loaded with handy links to amazing D&D tools and resources that we've curated from the wilderness of the internet, so you don't have to!</p>
+            <p>Every D&D player knows the pain of losing track of quest threads and NPC side-quests. Now you can use your profile page to keep a close eye on your progress! Never again will you lose out on that 50 gold that random farmer promised you and your cronies for curbing those pesky Gnolls raiding the town. Sweet! You can also create and keep a log of all your characters. At a glance, look up the minutiae of that spell that you forgot about, or maybe save your poor, beleaguered DM some time and swot up on your rules knowledge with our 5th Edition SRD database. We'll also keep you loaded with handy links to amazing D&D tools and resources that we've curated from the wilderness of the internet, so you don't have to!</p>
         </div>
     </div>
 </section>
@@ -319,6 +319,7 @@
                             <p class="card-text"><strong>Armor Class : </strong>{{ character.character_ac }}</p>
                             <p class="card-text"><strong>Max HP : </strong>{{ character.character_hp }}</p>
                             <strong>Stats</strong>
+                            <div style="overflow-x:auto;">
                             <table class="small">
                                 <tr>
                                     <th>STR</th>
@@ -337,6 +338,7 @@
                                     <td>{{ character.character_cha }}</td>
                                 </tr>
                             </table>
+                            </div>
                             <br>
                             <h5>
                             <!-- EDIT/DELETE CHARACTER BUTTONS -->
@@ -702,9 +704,9 @@
                     <div id="target{{quest._id}}" class="collapse" aria-labelledby="questTop" data-parent="#accordion"
                         aria-expanded="false">
                         <div class="card-body">
-                            <p>Description : {{ quest.quest_description }}</p>
-                            <p>Rewards : {{ quest.quest_rewards }}</p>
-                            <small>Created by : {{ quest.created_by }}</small>
+                            <p><strong> Description : </strong>{{ quest.quest_description }}</p>
+                            <p><strong>Rewards : </strong>{{ quest.quest_rewards }}</p>
+                            <small><strong>Created by : </strong>{{ quest.created_by }}</small>
                         </div>
                     </div>
 
