@@ -12,6 +12,8 @@ main {
     flex-basis: 100%;
 }
 
+
+
 .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
@@ -40,15 +42,13 @@ main {
 .navbar {
     background-color: #000;
 }
-.navbar-nav .nav-link {
+.navbar-nav, .nav-link {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.navbar-nav .nav-link:focus,
-.navbar-nav {
-    color: rgba(170, 0, 0, 0.75);
-}
-
+.navbar-nav, 
+.nav-link:focus,
+.navbar-nav,
 .nav-link:hover {
     color: rgba(170, 0, 0, 0.75);
 }
@@ -105,13 +105,7 @@ main {
 
 /* INDEX STYLES */
 .index-hero {
-    color: white;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/large-images/index-hero-banner.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 150px;
-    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/large-images/index-hero-banner.jpg)
 }
 
 .index h5 {
@@ -172,13 +166,7 @@ main {
 
 /* RESOURCES PAGE */
 .resources-hero {
-    color: white;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/large-images/resources-hero.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 150px;
-    width: 100%;
 }
 
 .books-container {
@@ -200,18 +188,8 @@ main {
     min-height: 450px;
 }
 
-.lookup-list {
-    margin: 25px;
-}
-
 .lookup-hero {
-    color: white;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/large-images/lookup-banner.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 150px;
-    width: 100%;
 }
 
 .lookup-container {
@@ -245,6 +223,10 @@ main {
     text-decoration: underline;
 }
 
+.table-container{
+    overflow-x:auto;
+}
+
 table,
 th,
 td {
@@ -259,12 +241,9 @@ td {
     margin-left: 0;
     margin-right: 0;
 }
-#sidebar-container {
-    padding: 0;
-}
 
 .sidebar-expanded {
-    min-width: 400px;
+    width: 400px;
 }
 
 /* Menu item*/
@@ -323,9 +302,6 @@ td {
 /* REGISTER PAGE */
 .sign-up-container {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/large-images/user-auth-bg.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
     text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
     height: 100vh;
 }
@@ -346,13 +322,7 @@ td {
 
 /* PROFILE PAGE */
 .profile-hero {
-    color: white;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url(../assets/images/large-images/profile-banner.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 150px;
-    width: 100%;
 }
 
 .profile-intro,
@@ -405,6 +375,22 @@ td {
     background-color: #ffffff6b;
 }
 
+/* BACKGROUND/HERO POSITIONING */
+
+.index-hero,
+.resources-hero,
+.lookup-hero,
+.profile-hero,
+.sign-up-container{
+    color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 150px;
+    width: 100%;
+}
+
+
 /* MEDIA QUERIES */
 
 @media (max-width: 1100px) {
@@ -420,6 +406,15 @@ td {
         margin-left: 10%;
         margin-right: 10%;
         width: 100%;
+    }
+    .table-container{
+        width: 75%;
+    }
+}
+@media (max-width: 480px) {
+    .sidebar-expanded {
+        
+        max-width: 200px;
     }
 }
 

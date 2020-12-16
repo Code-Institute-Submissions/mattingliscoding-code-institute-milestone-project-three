@@ -37,7 +37,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <button class="btn quest-button" data-toggle="collapse" href="#characterForm" role="button" aria-expanded="false" aria-controls="questForm">Add a new character</button>
+                <button class="btn quest-button" data-toggle="collapse" href="#characterForm" aria-expanded="false" aria-controls="questForm">Add a new character</button>
             </div>
         </div>
         <!-- ADD CHARACTER FORM -->
@@ -328,7 +328,7 @@
                         <br />
                         <h5>
                             <!-- EDIT/DELETE CHARACTER BUTTONS -->
-                            <a data-toggle="collapse" href="#edit{{character._id}}" role="button" aria-expanded="false" aria-controls="editCharacterForm" class="btn edit-button">Edit</a>
+                            <a data-toggle="collapse" href="#edit{{character._id}}" role="button" aria-expanded="false" aria-controls="edit{{character._id}}" class="btn edit-button">Edit</a>
                             <a href="{{ url_for('delete_character', character_id=character._id) }}" class="btn delete-button">Delete</a>
                         </h5>
                         <!-- EDIT CHARACTER FORM -->
@@ -612,7 +612,6 @@
                     <textarea
                         rows="2"
                         name="quest_description"
-                        type="text"
                         class="form-control form-item"
                         id="quest_description"
                         placeholder="The ruthless Orcs have been pillaging their way up and down the Sword Coast, lets go get em!"
@@ -638,7 +637,7 @@
                 <div class="card quest-card">
                     <div class="card-header" id="questTop">
                         <h5>
-                            <a class="btn fancy-font quest_name" data-toggle="collapse" data-target="#target{{quest._id}}" aria-controls="target{{quest._id}}" aria-expanded="false">
+                            <a class="btn fancy-font quest_name" data-toggle="collapse" href="#target{{quest._id}}" data-target="#target{{quest._id}}" aria-controls="target{{quest._id}}" aria-expanded="false">
                                 {{ quest.quest_name }}<i class="btn fas fa-angle-double-down"></i>
                             </a>
                             <a data-toggle="collapse" href="#edit{{quest._id}}" role="button" aria-expanded="false" aria-controls="questForm" class="btn edit-button">Edit</a>
