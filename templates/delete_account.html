@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <section class="jumbotron jumbotron-fluid profile-hero">
     <div class="container-fluid">
@@ -22,10 +21,6 @@
             <a href="{{ url_for('profile', username=session['user']) }}" class="btn back-button">No, take me back!</a>
         </div>
     </div>
-   
- 
 </section>
-
-
 
 {% endblock %}

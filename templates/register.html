@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <div class="sign-up-container">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-                    <form class="user-auth-form" method="POST" action="{{ url_for('register') }}">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <form class="user-auth-form" method="POST" action="{{ url_for('register') }}">
                     <div class="row">
                         <div class="col text-center">
                             <h1>Register</h1>
-                            <p>Already a member? Head <a class="user-auth-link" href="{{ url_for('login') }}">here</a> to login!
-                            </p>
+                            <p>Already a member? Head <a class="user-auth-link" href="{{ url_for('login') }}">here</a> to login!</p>
                             <p>Please note, usernames and passwords must be between 5/15 characters in length, and alphanumeric only!</p>
                         </div>
                     </div>
                     <!-- USERNAME -->
                     <div class="row align-items-center">
                         <div class="col mt-4">
-                            <input type="text" id="username" class="validate form-control" placeholder="Username" name="username" minlength="5"
-                                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                            <input type="text" id="username" class="validate form-control" placeholder="Username" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
                         </div>
                     </div>
                     <!-- PASSWORD -->
                     <div class="row align-items-center mt-4">
                         <div class="col">
-                            <input id="password" name="password" type="password" minlength="5"
-                                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" placeholder="Password" required>
+                            <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" placeholder="Password" required />
                         </div>
                     </div>
                     <!-- SUBMIT BTN -->
@@ -35,24 +31,18 @@
                             <button class="btn join-button">Submit</button>
                         </div>
                     </div>
-                    </form>
-                    <!-- FLASH MESSAGES -->
-                    <div>
-                        {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                                {% for message in messages %}
-                                    <div class="mt-4 flashes">
-                                        <h4>{{ message }}</h4>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                        {% endwith %}
+                </form>
+                <!-- FLASH MESSAGES -->
+                <div>
+                    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                    <div class="mt-4 flashes">
+                        <h4>{{ message }}</h4>
                     </div>
+                    {% endfor %} {% endif %} {% endwith %}
                 </div>
             </div>
         </div>
+    </div>
 </div>
-
-
 
 {% endblock %}

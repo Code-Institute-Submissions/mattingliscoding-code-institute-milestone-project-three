@@ -1,118 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="Description" content="Enter your description here" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+        {% block styles %} {% endblock %}
+        <title>Dungeon Club</title>
+    </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    {% block styles %}
-    {% endblock %}
-	<title>Dungeon Club</title>
-</head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand fancy-font" href="{{ url_for('index') }}">DUNGEON CLUB</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand fancy-font" href="{{ url_for('index') }}">DUNGEON CLUB</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-	
-		<div class="collapse navbar-collapse header-links" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="{{ url_for('lookup') }}">5th Edition SRD</a>
-                </li>
-                <li class="nav-item">
-					<a class="nav-link" href="{{ url_for('resources') }}">Resources</a>
-				</li>
-                {% if session.user %}
-                <li class="nav-item">
-					<a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-				</li>
-                {% endif %}
-			</ul>
-			<ul class="navbar-nav">
-                {% if session.user %}
-                <li class="nav-item">
-					<a class="nav-link log-button" href="{{ url_for('logout') }}">Log Out</a>
-                </li>
-                <li class="nav-item">
-					<a class="nav-link log-button" href="{{ url_for('delete_account', username=session['user']) }}">Delete Account</a>
-                </li>
-                {% endif %}
-                {% if session.user == null %}
-                <li class="nav-item">
-					<a class="nav-link log-button" href="{{ url_for('login') }}">Log In</a>
-				</li>
-                <li class="nav-item">
-					<a class="nav-link" href="{{ url_for('register') }}">Register</a>
-                </li>
-                {% endif %}
-            </ul>
-            <ul class="nav justify-content-center">
-                <li class="nav-item flashes">
-                    {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            {% for message in messages %}
-                                    <p>{{ message }}</p>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                </li>
-            </ul>
-		</div>
-	</nav>
-    <div class="red-divider"></div>
-	
+            <div class="collapse navbar-collapse header-links" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('lookup') }}">5th Edition SRD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('resources') }}">Resources</a>
+                    </li>
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav">
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link log-button" href="{{ url_for('logout') }}">Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link log-button" href="{{ url_for('delete_account', username=session['user']) }}">Delete Account</a>
+                    </li>
+                    {% endif %} {% if session.user == null %}
+                    <li class="nav-item">
+                        <a class="nav-link log-button" href="{{ url_for('login') }}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item flashes">
+                        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                        <p>{{ message }}</p>
+                        {% endfor %} {% endif %} {% endwith %}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="red-divider"></div>
 
-   
-	<main>         
-        {% block content %}
-        {% endblock %}
-    </main>
+        <!-- FLASK CONTENT -->
+        <main>
+            {% block content %} {% endblock %}
+        </main>
 
-    <div class="red-divider"></div>
-    <section class="footer">
+        <!-- FOOTER -->
+        <div class="red-divider"></div>
+        <section class="footer">
             <div class="container footer-links">
                 <div class="row justify-content-center">
-                <a class="nav-link footer-links" href="#">Back to top</a>
-                <a class="nav-link footer-links" href="{{ url_for('index') }}">Home</a>
-                <a class="nav-link footer-links" href="{{ url_for('lookup') }}">5th Edition SRD</a>
-                <a class="nav-link footer-links" href="{{ url_for('resources') }}">Resources</a>
-                {% if session.user %}
-                <a class="nav-link footer-links" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-                <a class="nav-link footer-links" href="{{ url_for('logout') }}">Log Out</a>
-                <a class="nav-link footer-links" href="{{ url_for('delete_account', username=session['user']) }}">Delete Account</a>
-                {% endif %}
-                {% if session.user == null %}
-                <a class="nav-link footer-links" href="{{ url_for('login') }}">Log In</a>
-                <a class="nav-link footer-links" href="{{ url_for('register') }}">Register</a>
-                {% endif %}
-                <a class="nav-link footer-links" href="{{ url_for('legal') }}">Legal/Copyright</a>
+                    <a class="nav-link footer-links" href="#">Back to top</a>
+                    <a class="nav-link footer-links" href="{{ url_for('index') }}">Home</a>
+                    <a class="nav-link footer-links" href="{{ url_for('lookup') }}">5th Edition SRD</a>
+                    <a class="nav-link footer-links" href="{{ url_for('resources') }}">Resources</a>
+                    {% if session.user %}
+                    <a class="nav-link footer-links" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                    <a class="nav-link footer-links" href="{{ url_for('logout') }}">Log Out</a>
+                    <a class="nav-link footer-links" href="{{ url_for('delete_account', username=session['user']) }}">Delete Account</a>
+                    {% endif %} {% if session.user == null %}
+                    <a class="nav-link footer-links" href="{{ url_for('login') }}">Log In</a>
+                    <a class="nav-link footer-links" href="{{ url_for('register') }}">Register</a>
+                    {% endif %}
+                    <a class="nav-link footer-links" href="{{ url_for('legal') }}">Legal/Copyright</a>
                 </div>
             </div>
         </section>
 
-    
-    
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    {% block scripts %}
-    {% endblock %}
-</body>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        {% block scripts %} {% endblock %}
+    </body>
 </html>

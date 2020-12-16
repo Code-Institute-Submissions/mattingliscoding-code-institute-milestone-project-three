@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <section class="jumbotron jumbotron-fluid resources-hero">
     <div class="container-fluid">
@@ -13,14 +12,13 @@
 </section>
 <div class="black-divider"></div>
 
-
 <section class="books-container mt-4 mb-4">
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3">
             {% for book in books %}
             <div class="col mb-4">
                 <div class="card book-card h-100">
-                    <img src="{{ book.icon }}" class="card-img-top" alt="Cover art of dungeons and dragons sourcebook">
+                    <img src="{{ book.icon }}" class="card-img-top" alt="Cover art of dungeons and dragons sourcebook" />
                     <div class="card-body">
                         <h5 class="fancy-font card-title">{{ book.name }}</h5>
                         <p>{{ book.type }}</p>
@@ -34,7 +32,5 @@
         </div>
     </div>
 </section>
-
-
 
 {% endblock %}

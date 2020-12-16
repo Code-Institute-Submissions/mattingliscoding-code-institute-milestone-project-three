@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <section class="jumbotron jumbotron-fluid profile-hero">
     <div class="container-fluid">
@@ -17,7 +16,12 @@
     <div class="row pt-4 pb-4">
         <div class="col">
             <h3 class="fancy-font">Your D&D Homepage</h3>
-            <p>Every D&D player knows the pain of losing track of quest threads and NPC side-quests. Now you can use your profile page to keep a close eye on your progress! Never again will you lose out on that 50 gold that random farmer promised you and your cronies for curbing those pesky Gnolls raiding the town. Sweet! You can also create and keep a log of all your characters. At a glance, look up the minutiae of that spell that you forgot about, or maybe save your poor, beleaguered DM some time and swot up on your rules knowledge with our 5th Edition SRD database. We'll also keep you loaded with handy links to amazing D&D tools and resources that we've curated from the wilderness of the internet, so you don't have to!</p>
+            <p>
+                Every D&D player knows the pain of losing track of quest threads and NPC side-quests. Now you can use your profile page to keep a close eye on your progress! Never again will you lose out on that 50 gold that random farmer
+                promised you and your cronies for curbing those pesky Gnolls raiding the town. Sweet! You can also create and keep a log of all your characters. At a glance, look up the minutiae of that spell that you forgot about, or maybe
+                save your poor, beleaguered DM some time and swot up on your rules knowledge with our 5th Edition SRD database. We'll also keep you loaded with handy links to amazing D&D tools and resources that we've curated from the
+                wilderness of the internet, so you don't have to!
+            </p>
         </div>
     </div>
 </section>
@@ -33,60 +37,43 @@
         </div>
         <div class="row">
             <div class="col">
-                <button class="btn quest-button" data-toggle="collapse" href="#characterForm" role="button"
-                    aria-expanded="false" aria-controls="questForm">Add a new character</button>
+                <button class="btn quest-button" data-toggle="collapse" href="#characterForm" role="button" aria-expanded="false" aria-controls="questForm">Add a new character</button>
             </div>
-
         </div>
         <!-- ADD CHARACTER FORM -->
         <div class="collapse mt-2" id="characterForm">
             <form method="POST" action="{{ url_for('add_character') }}">
                 <div class="form-group">
                     <label class="fancy-font" for="character_name">Character Name</label>
-                    <input name="character_name" type="text" class="form-control form-item" id="character_name" placeholder="Steve"
-                        required>
+                    <input name="character_name" type="text" class="form-control form-item" id="character_name" placeholder="Steve" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_avatar">Avatar Link</label>
-                    <input name="character_avatar" type="text" class="form-control form-item" id="character_avatar"
-                        placeholder="Use a free image host service such as Imgur to upload your character avatar."
-                        required>
+                    <input name="character_avatar" type="text" class="form-control form-item" id="character_avatar" placeholder="Use a free image host service such as Imgur to upload your character avatar." required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_race">Race</label>
-                    <input name="character_race" type="text" class="form-control form-item" id="character_race"
-                        placeholder="High-Elf"
-                        required>
+                    <input name="character_race" type="text" class="form-control form-item" id="character_race" placeholder="High-Elf" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_class">Class</label>
-                    <input name="character_class" type="text" class="form-control form-item" id="character_class"
-                        placeholder="Warlock"
-                        required>
+                    <input name="character_class" type="text" class="form-control form-item" id="character_class" placeholder="Warlock" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_level">Level</label>
-                    <input name="character_level" type="text" class="form-control form-item" id="character_level"
-                        placeholder="14"
-                        required>
+                    <input name="character_level" type="text" class="form-control form-item" id="character_level" placeholder="14" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_alignment">Alignment</label>
-                    <input name="character_alignment" type="text" class="form-control form-item" id="character_alignment"
-                        placeholder="Chaotic Good"
-                        required>
+                    <input name="character_alignment" type="text" class="form-control form-item" id="character_alignment" placeholder="Chaotic Good" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_ac">Armor Class</label>
-                    <input name="character_ac" type="text" class="form-control form-item" id="character_ac"
-                        placeholder="14"
-                        required>
+                    <input name="character_ac" type="text" class="form-control form-item" id="character_ac" placeholder="14" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_hp">Max HP</label>
-                    <input name="character_hp" type="text" class="form-control form-item" id="character_hp"
-                        placeholder="101"
-                        required>
+                    <input name="character_hp" type="text" class="form-control form-item" id="character_hp" placeholder="101" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_str">Strength</label>
@@ -304,22 +291,21 @@
     </div>
     <!-- DISPLAY CHARACTER -->
     <div class="container">
-            <div class="row row-cols-1 row-cols-md-3">
-                {% for character in characters %}
-                {% if session.user|lower == character.created_by|lower %}
-                <div class="col mb-4">
-                    <div class="card character-card h-100">
-                        <img src="{{ character.character_avatar }}" class="card-img-top" alt="character avatar">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ character.character_name }}</h5>
-                            <p class="card-text"><strong>Race : </strong>{{ character.character_race }}</p>
-                            <p class="card-text"><strong>Class : </strong>{{ character.character_class }}</p>
-                            <p class="card-text"><strong>Level : </strong>{{ character.character_level }}</p>
-                            <p class="card-text"><strong>Alignment :</strong>{{ character.character_alignment }}</p>
-                            <p class="card-text"><strong>Armor Class : </strong>{{ character.character_ac }}</p>
-                            <p class="card-text"><strong>Max HP : </strong>{{ character.character_hp }}</p>
-                            <strong>Stats</strong>
-                            <div style="overflow-x:auto;">
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for character in characters %} {% if session.user|lower == character.created_by|lower %}
+            <div class="col mb-4">
+                <div class="card character-card h-100">
+                    <img src="{{ character.character_avatar }}" class="card-img-top" alt="character avatar" />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ character.character_name }}</h5>
+                        <p class="card-text"><strong>Race : </strong>{{ character.character_race }}</p>
+                        <p class="card-text"><strong>Class : </strong>{{ character.character_class }}</p>
+                        <p class="card-text"><strong>Level : </strong>{{ character.character_level }}</p>
+                        <p class="card-text"><strong>Alignment :</strong>{{ character.character_alignment }}</p>
+                        <p class="card-text"><strong>Armor Class : </strong>{{ character.character_ac }}</p>
+                        <p class="card-text"><strong>Max HP : </strong>{{ character.character_hp }}</p>
+                        <strong>Stats</strong>
+                        <div style="overflow-x: auto;">
                             <table class="small">
                                 <tr>
                                     <th>STR</th>
@@ -338,285 +324,271 @@
                                     <td>{{ character.character_cha }}</td>
                                 </tr>
                             </table>
-                            </div>
-                            <br>
-                            <h5>
+                        </div>
+                        <br />
+                        <h5>
                             <!-- EDIT/DELETE CHARACTER BUTTONS -->
-                            <a data-toggle="collapse" href="#edit{{character._id}}" role="button" aria-expanded="false" aria-controls="editCharacterForm"
-                                class="btn edit-button">Edit</a>
-                            <a href="{{ url_for('delete_character', character_id=character._id) }}"
-                                class="btn delete-button">Delete</a>
-                            </h5>
-                            <!-- EDIT CHARACTER FORM -->
-                            <div class="collapse mt-2" id="edit{{character._id}}">
-                                <form method="POST" action="{{ url_for('edit_character', character_id=character._id) }}">
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_name">Character Name</label>
-                                        <input name="character_name" type="text" class="form-control form-item" id="edit_character_name"
-                                            placeholder="Steve" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_avatar">Avatar Link</label>
-                                        <input name="character_avatar" type="text" class="form-control form-item" id="edit_character_avatar"
-                                            placeholder="Use a free image host service such as Imgur to upload your character avatar." required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_race">Race</label>
-                                        <input name="character_race" type="text" class="form-control form-item" id="edit_character_race"
-                                            placeholder="High-Elf" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_class">Class</label>
-                                        <input name="character_class" type="text" class="form-control form-item" id="edit_character_class"
-                                            placeholder="Warlock" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_level">Level</label>
-                                        <input name="character_level" type="text" class="form-control form-item" id="edit_character_level"
-                                            placeholder="14" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_alignment">Alignment</label>
-                                        <input name="character_alignment" type="text" class="form-control form-item" id="edit_character_alignment"
-                                            placeholder="Chaotic Good" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_ac">Armor Class</label>
-                                        <input name="character_ac" type="text" class="form-control form-item" id="edit_character_ac" placeholder="14"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_hp">Max HP</label>
-                                        <input name="character_hp" type="text" class="form-control form-item" id="edit_character_hp" placeholder="101"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_str">Strength</label>
-                                        <select class="form-control" id="edit_character_str" name="character_str">
-                                            <option>1 (-5)</option>
-                                            <option>2 (-4)</option>
-                                            <option>3 (-4)</option>
-                                            <option>4 (-3)</option>
-                                            <option>5 (-3)</option>
-                                            <option>6 (-2)</option>
-                                            <option>7 (-2)</option>
-                                            <option>8 (-1)</option>
-                                            <option>9 (-1)</option>
-                                            <option>10 (+0)</option>
-                                            <option>11 (+0)</option>
-                                            <option>12 (+1)</option>
-                                            <option>13 (+1)</option>
-                                            <option>14 (+2)</option>
-                                            <option>15 (+2)</option>
-                                            <option>16 (+3)</option>
-                                            <option>17 (+3)</option>
-                                            <option>18 (+4)</option>
-                                            <option>19 (+4)</option>
-                                            <option>20 (+5)</option>
-                                            <option>21 (+5)</option>
-                                            <option>22 (+6)</option>
-                                            <option>23 (+6)</option>
-                                            <option>24 (+7)</option>
-                                            <option>25 (+7)</option>
-                                            <option>26 (+8)</option>
-                                            <option>27 (+8)</option>
-                                            <option>28 (+9)</option>
-                                            <option>29 (+9)</option>
-                                            <option>30 (+10)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_int">Intelligence</label>
-                                        <select class="form-control" id="edit_character_int" name="character_int">
-                                            <option>1 (-5)</option>
-                                            <option>2 (-4)</option>
-                                            <option>3 (-4)</option>
-                                            <option>4 (-3)</option>
-                                            <option>5 (-3)</option>
-                                            <option>6 (-2)</option>
-                                            <option>7 (-2)</option>
-                                            <option>8 (-1)</option>
-                                            <option>9 (-1)</option>
-                                            <option>10 (+0)</option>
-                                            <option>11 (+0)</option>
-                                            <option>12 (+1)</option>
-                                            <option>13 (+1)</option>
-                                            <option>14 (+2)</option>
-                                            <option>15 (+2)</option>
-                                            <option>16 (+3)</option>
-                                            <option>17 (+3)</option>
-                                            <option>18 (+4)</option>
-                                            <option>19 (+4)</option>
-                                            <option>20 (+5)</option>
-                                            <option>21 (+5)</option>
-                                            <option>22 (+6)</option>
-                                            <option>23 (+6)</option>
-                                            <option>24 (+7)</option>
-                                            <option>25 (+7)</option>
-                                            <option>26 (+8)</option>
-                                            <option>27 (+8)</option>
-                                            <option>28 (+9)</option>
-                                            <option>29 (+9)</option>
-                                            <option>30 (+10)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_dex">Dexterity</label>
-                                        <select class="form-control" id="edit_character_dex" name="character_dex">
-                                            <option>1 (-5)</option>
-                                            <option>2 (-4)</option>
-                                            <option>3 (-4)</option>
-                                            <option>4 (-3)</option>
-                                            <option>5 (-3)</option>
-                                            <option>6 (-2)</option>
-                                            <option>7 (-2)</option>
-                                            <option>8 (-1)</option>
-                                            <option>9 (-1)</option>
-                                            <option>10 (+0)</option>
-                                            <option>11 (+0)</option>
-                                            <option>12 (+1)</option>
-                                            <option>13 (+1)</option>
-                                            <option>14 (+2)</option>
-                                            <option>15 (+2)</option>
-                                            <option>16 (+3)</option>
-                                            <option>17 (+3)</option>
-                                            <option>18 (+4)</option>
-                                            <option>19 (+4)</option>
-                                            <option>20 (+5)</option>
-                                            <option>21 (+5)</option>
-                                            <option>22 (+6)</option>
-                                            <option>23 (+6)</option>
-                                            <option>24 (+7)</option>
-                                            <option>25 (+7)</option>
-                                            <option>26 (+8)</option>
-                                            <option>27 (+8)</option>
-                                            <option>28 (+9)</option>
-                                            <option>29 (+9)</option>
-                                            <option>30 (+10)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_wis">Wisdom</label>
-                                        <select class="form-control" id="edit_character_wis" name="character_wis">
-                                            <option>1 (-5)</option>
-                                            <option>2 (-4)</option>
-                                            <option>3 (-4)</option>
-                                            <option>4 (-3)</option>
-                                            <option>5 (-3)</option>
-                                            <option>6 (-2)</option>
-                                            <option>7 (-2)</option>
-                                            <option>8 (-1)</option>
-                                            <option>9 (-1)</option>
-                                            <option>10 (+0)</option>
-                                            <option>11 (+0)</option>
-                                            <option>12 (+1)</option>
-                                            <option>13 (+1)</option>
-                                            <option>14 (+2)</option>
-                                            <option>15 (+2)</option>
-                                            <option>16 (+3)</option>
-                                            <option>17 (+3)</option>
-                                            <option>18 (+4)</option>
-                                            <option>19 (+4)</option>
-                                            <option>20 (+5)</option>
-                                            <option>21 (+5)</option>
-                                            <option>22 (+6)</option>
-                                            <option>23 (+6)</option>
-                                            <option>24 (+7)</option>
-                                            <option>25 (+7)</option>
-                                            <option>26 (+8)</option>
-                                            <option>27 (+8)</option>
-                                            <option>28 (+9)</option>
-                                            <option>29 (+9)</option>
-                                            <option>30 (+10)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_con">Constitution</label>
-                                        <select class="form-control" id="edit_character_con" name="character_con">
-                                            <option>1 (-5)</option>
-                                            <option>2 (-4)</option>
-                                            <option>3 (-4)</option>
-                                            <option>4 (-3)</option>
-                                            <option>5 (-3)</option>
-                                            <option>6 (-2)</option>
-                                            <option>7 (-2)</option>
-                                            <option>8 (-1)</option>
-                                            <option>9 (-1)</option>
-                                            <option>10 (+0)</option>
-                                            <option>11 (+0)</option>
-                                            <option>12 (+1)</option>
-                                            <option>13 (+1)</option>
-                                            <option>14 (+2)</option>
-                                            <option>15 (+2)</option>
-                                            <option>16 (+3)</option>
-                                            <option>17 (+3)</option>
-                                            <option>18 (+4)</option>
-                                            <option>19 (+4)</option>
-                                            <option>20 (+5)</option>
-                                            <option>21 (+5)</option>
-                                            <option>22 (+6)</option>
-                                            <option>23 (+6)</option>
-                                            <option>24 (+7)</option>
-                                            <option>25 (+7)</option>
-                                            <option>26 (+8)</option>
-                                            <option>27 (+8)</option>
-                                            <option>28 (+9)</option>
-                                            <option>29 (+9)</option>
-                                            <option>30 (+10)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="fancy-font" for="character_cha">Charisma</label>
-                                        <select class="form-control" id="edit_character_cha" name="character_cha">
-                                            <option>1 (-5)</option>
-                                            <option>2 (-4)</option>
-                                            <option>3 (-4)</option>
-                                            <option>4 (-3)</option>
-                                            <option>5 (-3)</option>
-                                            <option>6 (-2)</option>
-                                            <option>7 (-2)</option>
-                                            <option>8 (-1)</option>
-                                            <option>9 (-1)</option>
-                                            <option>10 (+0)</option>
-                                            <option>11 (+0)</option>
-                                            <option>12 (+1)</option>
-                                            <option>13 (+1)</option>
-                                            <option>14 (+2)</option>
-                                            <option>15 (+2)</option>
-                                            <option>16 (+3)</option>
-                                            <option>17 (+3)</option>
-                                            <option>18 (+4)</option>
-                                            <option>19 (+4)</option>
-                                            <option>20 (+5)</option>
-                                            <option>21 (+5)</option>
-                                            <option>22 (+6)</option>
-                                            <option>23 (+6)</option>
-                                            <option>24 (+7)</option>
-                                            <option>25 (+7)</option>
-                                            <option>26 (+8)</option>
-                                            <option>27 (+8)</option>
-                                            <option>28 (+9)</option>
-                                            <option>29 (+9)</option>
-                                            <option>30 (+10)</option>
-                                        </select>
-                                    </div>
-                                    <button class="btn btn-secondary" type="submit">Edit Character</button>
-                                </form>
-                            </div>
+                            <a data-toggle="collapse" href="#edit{{character._id}}" role="button" aria-expanded="false" aria-controls="editCharacterForm" class="btn edit-button">Edit</a>
+                            <a href="{{ url_for('delete_character', character_id=character._id) }}" class="btn delete-button">Delete</a>
+                        </h5>
+                        <!-- EDIT CHARACTER FORM -->
+                        <div class="collapse mt-2" id="edit{{character._id}}">
+                            <form method="POST" action="{{ url_for('edit_character', character_id=character._id) }}">
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_name">Character Name</label>
+                                    <input name="character_name" type="text" class="form-control form-item" id="edit_character_name" placeholder="Steve" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_avatar">Avatar Link</label>
+                                    <input name="character_avatar" type="text" class="form-control form-item" id="edit_character_avatar" placeholder="Use a free image host service such as Imgur to upload your character avatar." required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_race">Race</label>
+                                    <input name="character_race" type="text" class="form-control form-item" id="edit_character_race" placeholder="High-Elf" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_class">Class</label>
+                                    <input name="character_class" type="text" class="form-control form-item" id="edit_character_class" placeholder="Warlock" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_level">Level</label>
+                                    <input name="character_level" type="text" class="form-control form-item" id="edit_character_level" placeholder="14" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_alignment">Alignment</label>
+                                    <input name="character_alignment" type="text" class="form-control form-item" id="edit_character_alignment" placeholder="Chaotic Good" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_ac">Armor Class</label>
+                                    <input name="character_ac" type="text" class="form-control form-item" id="edit_character_ac" placeholder="14" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_hp">Max HP</label>
+                                    <input name="character_hp" type="text" class="form-control form-item" id="edit_character_hp" placeholder="101" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_str">Strength</label>
+                                    <select class="form-control" id="edit_character_str" name="character_str">
+                                        <option>1 (-5)</option>
+                                        <option>2 (-4)</option>
+                                        <option>3 (-4)</option>
+                                        <option>4 (-3)</option>
+                                        <option>5 (-3)</option>
+                                        <option>6 (-2)</option>
+                                        <option>7 (-2)</option>
+                                        <option>8 (-1)</option>
+                                        <option>9 (-1)</option>
+                                        <option>10 (+0)</option>
+                                        <option>11 (+0)</option>
+                                        <option>12 (+1)</option>
+                                        <option>13 (+1)</option>
+                                        <option>14 (+2)</option>
+                                        <option>15 (+2)</option>
+                                        <option>16 (+3)</option>
+                                        <option>17 (+3)</option>
+                                        <option>18 (+4)</option>
+                                        <option>19 (+4)</option>
+                                        <option>20 (+5)</option>
+                                        <option>21 (+5)</option>
+                                        <option>22 (+6)</option>
+                                        <option>23 (+6)</option>
+                                        <option>24 (+7)</option>
+                                        <option>25 (+7)</option>
+                                        <option>26 (+8)</option>
+                                        <option>27 (+8)</option>
+                                        <option>28 (+9)</option>
+                                        <option>29 (+9)</option>
+                                        <option>30 (+10)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_int">Intelligence</label>
+                                    <select class="form-control" id="edit_character_int" name="character_int">
+                                        <option>1 (-5)</option>
+                                        <option>2 (-4)</option>
+                                        <option>3 (-4)</option>
+                                        <option>4 (-3)</option>
+                                        <option>5 (-3)</option>
+                                        <option>6 (-2)</option>
+                                        <option>7 (-2)</option>
+                                        <option>8 (-1)</option>
+                                        <option>9 (-1)</option>
+                                        <option>10 (+0)</option>
+                                        <option>11 (+0)</option>
+                                        <option>12 (+1)</option>
+                                        <option>13 (+1)</option>
+                                        <option>14 (+2)</option>
+                                        <option>15 (+2)</option>
+                                        <option>16 (+3)</option>
+                                        <option>17 (+3)</option>
+                                        <option>18 (+4)</option>
+                                        <option>19 (+4)</option>
+                                        <option>20 (+5)</option>
+                                        <option>21 (+5)</option>
+                                        <option>22 (+6)</option>
+                                        <option>23 (+6)</option>
+                                        <option>24 (+7)</option>
+                                        <option>25 (+7)</option>
+                                        <option>26 (+8)</option>
+                                        <option>27 (+8)</option>
+                                        <option>28 (+9)</option>
+                                        <option>29 (+9)</option>
+                                        <option>30 (+10)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_dex">Dexterity</label>
+                                    <select class="form-control" id="edit_character_dex" name="character_dex">
+                                        <option>1 (-5)</option>
+                                        <option>2 (-4)</option>
+                                        <option>3 (-4)</option>
+                                        <option>4 (-3)</option>
+                                        <option>5 (-3)</option>
+                                        <option>6 (-2)</option>
+                                        <option>7 (-2)</option>
+                                        <option>8 (-1)</option>
+                                        <option>9 (-1)</option>
+                                        <option>10 (+0)</option>
+                                        <option>11 (+0)</option>
+                                        <option>12 (+1)</option>
+                                        <option>13 (+1)</option>
+                                        <option>14 (+2)</option>
+                                        <option>15 (+2)</option>
+                                        <option>16 (+3)</option>
+                                        <option>17 (+3)</option>
+                                        <option>18 (+4)</option>
+                                        <option>19 (+4)</option>
+                                        <option>20 (+5)</option>
+                                        <option>21 (+5)</option>
+                                        <option>22 (+6)</option>
+                                        <option>23 (+6)</option>
+                                        <option>24 (+7)</option>
+                                        <option>25 (+7)</option>
+                                        <option>26 (+8)</option>
+                                        <option>27 (+8)</option>
+                                        <option>28 (+9)</option>
+                                        <option>29 (+9)</option>
+                                        <option>30 (+10)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_wis">Wisdom</label>
+                                    <select class="form-control" id="edit_character_wis" name="character_wis">
+                                        <option>1 (-5)</option>
+                                        <option>2 (-4)</option>
+                                        <option>3 (-4)</option>
+                                        <option>4 (-3)</option>
+                                        <option>5 (-3)</option>
+                                        <option>6 (-2)</option>
+                                        <option>7 (-2)</option>
+                                        <option>8 (-1)</option>
+                                        <option>9 (-1)</option>
+                                        <option>10 (+0)</option>
+                                        <option>11 (+0)</option>
+                                        <option>12 (+1)</option>
+                                        <option>13 (+1)</option>
+                                        <option>14 (+2)</option>
+                                        <option>15 (+2)</option>
+                                        <option>16 (+3)</option>
+                                        <option>17 (+3)</option>
+                                        <option>18 (+4)</option>
+                                        <option>19 (+4)</option>
+                                        <option>20 (+5)</option>
+                                        <option>21 (+5)</option>
+                                        <option>22 (+6)</option>
+                                        <option>23 (+6)</option>
+                                        <option>24 (+7)</option>
+                                        <option>25 (+7)</option>
+                                        <option>26 (+8)</option>
+                                        <option>27 (+8)</option>
+                                        <option>28 (+9)</option>
+                                        <option>29 (+9)</option>
+                                        <option>30 (+10)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_con">Constitution</label>
+                                    <select class="form-control" id="edit_character_con" name="character_con">
+                                        <option>1 (-5)</option>
+                                        <option>2 (-4)</option>
+                                        <option>3 (-4)</option>
+                                        <option>4 (-3)</option>
+                                        <option>5 (-3)</option>
+                                        <option>6 (-2)</option>
+                                        <option>7 (-2)</option>
+                                        <option>8 (-1)</option>
+                                        <option>9 (-1)</option>
+                                        <option>10 (+0)</option>
+                                        <option>11 (+0)</option>
+                                        <option>12 (+1)</option>
+                                        <option>13 (+1)</option>
+                                        <option>14 (+2)</option>
+                                        <option>15 (+2)</option>
+                                        <option>16 (+3)</option>
+                                        <option>17 (+3)</option>
+                                        <option>18 (+4)</option>
+                                        <option>19 (+4)</option>
+                                        <option>20 (+5)</option>
+                                        <option>21 (+5)</option>
+                                        <option>22 (+6)</option>
+                                        <option>23 (+6)</option>
+                                        <option>24 (+7)</option>
+                                        <option>25 (+7)</option>
+                                        <option>26 (+8)</option>
+                                        <option>27 (+8)</option>
+                                        <option>28 (+9)</option>
+                                        <option>29 (+9)</option>
+                                        <option>30 (+10)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="fancy-font" for="character_cha">Charisma</label>
+                                    <select class="form-control" id="edit_character_cha" name="character_cha">
+                                        <option>1 (-5)</option>
+                                        <option>2 (-4)</option>
+                                        <option>3 (-4)</option>
+                                        <option>4 (-3)</option>
+                                        <option>5 (-3)</option>
+                                        <option>6 (-2)</option>
+                                        <option>7 (-2)</option>
+                                        <option>8 (-1)</option>
+                                        <option>9 (-1)</option>
+                                        <option>10 (+0)</option>
+                                        <option>11 (+0)</option>
+                                        <option>12 (+1)</option>
+                                        <option>13 (+1)</option>
+                                        <option>14 (+2)</option>
+                                        <option>15 (+2)</option>
+                                        <option>16 (+3)</option>
+                                        <option>17 (+3)</option>
+                                        <option>18 (+4)</option>
+                                        <option>19 (+4)</option>
+                                        <option>20 (+5)</option>
+                                        <option>21 (+5)</option>
+                                        <option>22 (+6)</option>
+                                        <option>23 (+6)</option>
+                                        <option>24 (+7)</option>
+                                        <option>25 (+7)</option>
+                                        <option>26 (+8)</option>
+                                        <option>27 (+8)</option>
+                                        <option>28 (+9)</option>
+                                        <option>29 (+9)</option>
+                                        <option>30 (+10)</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-secondary" type="submit">Edit Character</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                {% endif %}
-                {% endfor %}
             </div>
+            {% endif %} {% endfor %}
+        </div>
     </div>
-
 </section>
 
-
 <!-- QUEST TO-DO CONTAINER -->
-<section class="shadow quest-wrapper container mt-4 mb-4 pb-4 ">
-
+<section class="shadow quest-wrapper container mt-4 mb-4 pb-4">
     <div class="container quest-form mb-4">
         <div class="row">
             <div class="col mt-4">
@@ -625,56 +597,52 @@
         </div>
         <div class="row">
             <div class="col">
-                <button class="btn quest-button" data-toggle="collapse" href="#questForm" role="button"
-                    aria-expanded="false" aria-controls="questForm">Add a new objective</button>
+                <button class="btn quest-button" data-toggle="collapse" href="#questForm" role="button" aria-expanded="false" aria-controls="questForm">Add a new objective</button>
             </div>
-
         </div>
         <!-- ADD QUEST FORM -->
         <div class="collapse mt-2" id="questForm">
             <form method="POST" action="{{ url_for('add_quest') }}">
                 <div class="form-group">
                     <label class="fancy-font" for="quest_name">Quest Title</label>
-                    <input name="quest_name" type="text" class="form-control form-item" id="quest_name" placeholder="Orc hunting"
-                        required>
+                    <input name="quest_name" type="text" class="form-control form-item" id="quest_name" placeholder="Orc hunting" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="quest_description">Description</label>
-                    <textarea rows="2" name="quest_description" type="text" class="form-control form-item" id="quest_description"
+                    <textarea
+                        rows="2"
+                        name="quest_description"
+                        type="text"
+                        class="form-control form-item"
+                        id="quest_description"
                         placeholder="The ruthless Orcs have been pillaging their way up and down the Sword Coast, lets go get em!"
-                        required></textarea>
+                        required
+                    ></textarea>
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="quest_rewards">Rewards</label>
-                    <input name="quest_rewards" type="text" class="form-control form-item" id="quest_rewards"
-                        placeholder="80 gold each and some other jobs in the future.">
+                    <input name="quest_rewards" type="text" class="form-control form-item" id="quest_rewards" placeholder="80 gold each and some other jobs in the future." />
                 </div>
                 <button class="btn btn-secondary" type="submit">Add quest</button>
             </form>
         </div>
     </div>
 
-
-
     <!-- LOOPING QUEST QUERY -->
     <div class="container">
         <div class="row">
             <div class="col" id="accordion">
-                {% for quest in quests %}
-                {% if session.user|lower == quest.created_by|lower %}
+                {% for quest in quests %} {% if session.user|lower == quest.created_by|lower %}
 
                 <!-- TOP QUEST CARD & EDIT/DELETE FUNCTION BUTTONS -->
                 <div class="card quest-card">
                     <div class="card-header" id="questTop">
                         <h5>
-                            <a class="btn fancy-font quest_name" data-toggle="collapse" data-target="#target{{quest._id}}"
-                                aria-controls="target{{quest._id}}" aria-expanded="false">
+                            <a class="btn fancy-font quest_name" data-toggle="collapse" data-target="#target{{quest._id}}" aria-controls="target{{quest._id}}" aria-expanded="false">
                                 {{ quest.quest_name }}<i class="btn fas fa-angle-double-down"></i>
                             </a>
-                            <a data-toggle="collapse" href="#edit{{quest._id}}" role="button" aria-expanded="false" aria-controls="questForm"
-                                class="btn edit-button">Edit</a>
-                            <a href="{{ url_for('delete_quest', quest_id=quest._id) }}"
-                                class="btn delete-button">Delete</a>
+                            <a data-toggle="collapse" href="#edit{{quest._id}}" role="button" aria-expanded="false" aria-controls="questForm" class="btn edit-button">Edit</a>
+                            <a href="{{ url_for('delete_quest', quest_id=quest._id) }}" class="btn delete-button">Delete</a>
                         </h5>
                     </div>
 
@@ -683,36 +651,30 @@
                         <form method="POST" action="{{ url_for('edit_quest', quest_id=quest._id) }}">
                             <div class="form-group">
                                 <label class="fancy-font" for="quest_name">Quest Title</label>
-                                <input name="quest_name" type="text" class="form-control form-item" id="edit_quest_name"
-                                    placeholder="New title" required>
+                                <input name="quest_name" type="text" class="form-control form-item" id="edit_quest_name" placeholder="New title" required />
                             </div>
                             <div class="form-group">
                                 <label class="fancy-font" for="quest_description">Description</label>
-                                <textarea rows="2" name="quest_description" type="text" class="form-control form-item"
-                                    id="edit_quest_description" placeholder="New Description" required></textarea>
+                                <textarea rows="2" name="quest_description" type="text" class="form-control form-item" id="edit_quest_description" placeholder="New Description" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="fancy-font" for="quest_rewards">Rewards</label>
-                                <input name="quest_rewards" type="text" class="form-control form-item" id="edit_quest_rewards"
-                                    placeholder="New rewards">
+                                <input name="quest_rewards" type="text" class="form-control form-item" id="edit_quest_rewards" placeholder="New rewards" />
                             </div>
                             <button class="btn btn-secondary" type="submit">Edit quest</button>
                         </form>
                     </div>
 
                     <!-- DISPLAY QUEST -->
-                    <div id="target{{quest._id}}" class="collapse" aria-labelledby="questTop" data-parent="#accordion"
-                        aria-expanded="false">
+                    <div id="target{{quest._id}}" class="collapse" aria-labelledby="questTop" data-parent="#accordion" aria-expanded="false">
                         <div class="card-body">
                             <p><strong> Description : </strong>{{ quest.quest_description }}</p>
                             <p><strong>Rewards : </strong>{{ quest.quest_rewards }}</p>
                             <small><strong>Created by : </strong>{{ quest.created_by }}</small>
                         </div>
                     </div>
-
                 </div>
-                {% endif %}
-                {% endfor %}
+                {% endif %} {% endfor %}
 
                 <!-- SAMPLE QUEST -->
             </div>
@@ -722,13 +684,14 @@
 
 <div class="page-divider"></div>
 
-
 <!-- EXTERNAL TOOLS SECTION -->
 <section class="container profile-tools mb-4">
     <div class="row pt-4 pb-4">
         <div class="col">
             <h3 class="fancy-font">External Tools</h3>
-            <p>If you happen to be planning a new campaign, here is a lovely curated list that we've made for you, with some fantastic tools from the length and breadth of the web to help become the best D&D DM or player that you can be!</p>
+            <p>
+                If you happen to be planning a new campaign, here is a lovely curated list that we've made for you, with some fantastic tools from the length and breadth of the web to help become the best D&D DM or player that you can be!
+            </p>
         </div>
     </div>
     <div class="row">
