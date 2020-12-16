@@ -80,10 +80,21 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     quests = list(mongo.db.quests.find())
+    characters = list(mongo.db.characters.find())
 
     if session["user"]:
         return render_template(
-            "profile.html", quests=quests, username=username)
+            "profile.html", quests=quests,
+            username=username, characters=characters)
+    return redirect(url_for("login"))
+
+
+# LOGOUT
+@app.route("/logout")
+def logout():
+    # remove user from session cookie
+    flash("You have been logged out. Come back soon!")
+    session.pop("user")
     return redirect(url_for("login"))
 
 
@@ -108,6 +119,7 @@ def delete_account_confirm():
     return redirect(url_for("register"))
 
 
+# ADD/EDIT/DELETE QUEST ROUTES
 @app.route("/add_quest", methods=["GET", "POST"])
 def add_quest():
     if request.method == "POST":
@@ -147,12 +159,66 @@ def delete_quest(quest_id):
     return redirect(url_for("profile", username=session["user"]))
 
 
-@app.route("/logout")
-def logout():
-    # remove user from session cookie
-    flash("You have been logged out. Come back soon!")
-    session.pop("user")
-    return redirect(url_for("login"))
+# CHARACTER ADD
+@app.route("/add_character", methods=["GET", "POST"])
+def add_character():
+    if request.method == "POST":
+        character = {
+            "character_avatar": request.form.get("character_avatar"),
+            "character_name": request.form.get("character_name"),
+            "character_race": request.form.get("character_race"),
+            "character_class": request.form.get("character_class"),
+            "character_level": request.form.get("character_level"),
+            "character_alignment": request.form.get("character_alignment"),
+            "character_ac": request.form.get("character_ac"),
+            "character_hp": request.form.get("character_hp"),
+            "character_str": request.form.get("character_str"),
+            "character_int": request.form.get("character_int"),
+            "character_dex": request.form.get("character_dex"),
+            "character_wis": request.form.get("character_wis"),
+            "character_con": request.form.get("character_con"),
+            "character_cha": request.form.get("character_cha"),
+            "created_by": session["user"]
+        }
+        mongo.db.characters.insert_one(character)
+        flash("Character Successfully Added!")
+        return redirect(url_for("profile", username=session["user"]))
+
+    return render_template("add_character.html")
+
+
+@app.route("/add_character/<character_id>", methods=["GET", "POST"])
+def edit_character(character_id):
+    if request.method == "POST":
+        character = {
+            "character_avatar": request.form.get("character_avatar"),
+            "character_name": request.form.get("character_name"),
+            "character_race": request.form.get("character_race"),
+            "character_class": request.form.get("character_class"),
+            "character_level": request.form.get("character_level"),
+            "character_alignment": request.form.get("character_alignment"),
+            "character_ac": request.form.get("character_ac"),
+            "character_hp": request.form.get("character_hp"),
+            "character_str": request.form.get("character_str"),
+            "character_int": request.form.get("character_int"),
+            "character_dex": request.form.get("character_dex"),
+            "character_wis": request.form.get("character_wis"),
+            "character_con": request.form.get("character_con"),
+            "character_cha": request.form.get("character_cha"),
+            "created_by": session["user"]
+        }
+        mongo.db.characters.update({"_id": ObjectId(character_id)}, character)
+        flash("Character Successfully Updated!")
+
+    character = mongo.db.characters.find_one({"_id": ObjectId(character_id)})
+    return redirect(url_for("profile", username=session["user"]))
+
+
+@app.route("/delete_character/<character_id>")
+def delete_character(character_id):
+    mongo.db.characters.remove({"_id": ObjectId(character_id)})
+    flash("Character Successfully Deleted!")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 # LOOKUP HOME ROUTE

@@ -1,7 +1,5 @@
 /* BASE TEMPLATE STYLES */
 body{
-    margin: 0;
-    padding: 0;
     background:  url(../assets/images/large-images/div-bg-texture.jpg);
     background-position: center center;
     background-size: cover; 
@@ -273,9 +271,6 @@ table, th, td {
 .sidebar-expanded {
     width: 400px;
 }
-.sidebar-collapsed {
-    width: 100px;
-}
 
 /* Menu item*/
 .list-group-item{
@@ -419,7 +414,8 @@ table, th, td {
     color: white;
 }
 
-.quest-card{
+.quest-card,
+.character-card{
     background-color: #ffffff6b;
 }
 
@@ -431,6 +427,15 @@ table, th, td {
     .lookup-image,
     .lookup-icon-container{
         display: none;
+    }
+}
+
+@media (max-width: 920px) {
+    .sidebar-expanded {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 100%;
     }
 }
 
