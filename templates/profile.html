@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="cta">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1 class="fancy_font">Welcome, {{username}}!</h1>
+                <h1 class="fancy-font">Welcome, {{username}}!</h1>
             </div>
         </div>
     </div>
@@ -15,20 +15,19 @@
 
 <section class="container profile-intro">
     <div class="row pt-4 pb-4">
-        <div class="col feature-one-text">
-            <h3 class="fancy_font">Your D&D Homepage</h3>
+        <div class="col">
+            <h3 class="fancy-font">Your D&D Homepage</h3>
             <p>Every D&D player knows the pain of losing track of quest threads and NPC side-quests. Now you can use your profile page to keep a close eye on your progress! Never again will you lose out on that 50 gold that random farmer promised you and your cronies for curbing those pesky Gnolls raiding the town. Sweet! At a glance, look up the minutiae of that spell that you forgot about, or maybe save your poor, beleaguered DM some time and swot up on your rules knowledge with our 5th Edition SRD database. We'll also keep you loaded with handy links to amazing D&D tools and resources that we've curated from the wilderness of the internet, so you don't have to!</p>
         </div>
     </div>
 </section>
 <div class="page-divider"></div>
 
-<section class="shadow quest-wrapper container mt-4 pb-4 ">
-
+<section class="shadow quest-wrapper container mt-4 mb-4 pb-4 ">
     <div class="container quest-form mb-4">
         <div class="row">
-            <div class="col feature-one-text mt-4">
-                <h3 class="fancy_font">{{username}}'s Quests</h3>
+            <div class="col mt-4">
+                <h3 class="fancy-font">{{username}}'s Quests</h3>
             </div>
         </div>
         <div class="row">
@@ -42,18 +41,18 @@
         <div class="collapse mt-2" id="questForm">
             <form method="POST" action="{{ url_for('add_quest') }}">
                 <div class="form-group">
-                    <label class="fancy_font" for="quest_name">Quest Title</label>
+                    <label class="fancy-font" for="quest_name">Quest Title</label>
                     <input name="quest_name" type="text" class="form-control form-item" id="quest_name" placeholder="Orc hunting"
                         required>
                 </div>
                 <div class="form-group">
-                    <label class="fancy_font" for="quest_description">Description</label>
+                    <label class="fancy-font" for="quest_description">Description</label>
                     <textarea rows="2" name="quest_description" type="text" class="form-control form-item" id="quest_description"
                         placeholder="The ruthless Orcs have been pillaging their way up and down the Sword Coast, lets go get em!"
                         required></textarea>
                 </div>
                 <div class="form-group">
-                    <label class="fancy_font" for="quest_rewards">Rewards</label>
+                    <label class="fancy-font" for="quest_rewards">Rewards</label>
                     <input name="quest_rewards" type="text" class="form-control form-item" id="quest_rewards"
                         placeholder="80 gold each and some other jobs in the future.">
                 </div>
@@ -76,13 +75,15 @@
                 <!-- TOP QUEST CARD & EDIT/DELETE FUNCTION BUTTONS -->
                 <div class="card quest-card">
                     <div class="card-header" id="questTop">
-                        <h5 class="mb-0">
-                            <button class="btn fancy_font" data-toggle="collapse" data-target="#target{{quest._id}}"
+                        <h5 class=>
+                            <a class="btn fancy-font quest_name" data-toggle="collapse" data-target="#target{{quest._id}}"
                                 aria-controls="target{{quest._id}}" aria-expanded="false">
-                                {{ quest.quest_name }}<i class="far fa-caret-square-down"></i>
-                            </button>
+                                {{ quest.quest_name }}<i class="btn fas fa-angle-double-down"></i>
+                            </a>
                             <a data-toggle="collapse" href="#edit{{quest._id}}" role="button" aria-expanded="false" aria-controls="questForm"
-                                class="btn">Edit</a>
+                                class="btn edit-button">Edit</a>
+                            <a href="{{ url_for('delete_quest', quest_id=quest._id) }}"
+                                class="btn delete-button">Delete</a>
                         </h5>
                     </div>
 
@@ -90,21 +91,21 @@
                     <div class="card-body collapse mt-2" id="edit{{quest._id}}">
                         <form method="POST" action="{{ url_for('edit_quest', quest_id=quest._id) }}">
                             <div class="form-group">
-                                <label class="fancy_font" for="quest_name">Quest Title</label>
+                                <label class="fancy-font" for="quest_name">Quest Title</label>
                                 <input name="quest_name" type="text" class="form-control form-item" id="edit_quest_name"
                                     placeholder="New title" required>
                             </div>
                             <div class="form-group">
-                                <label class="fancy_font" for="quest_description">Description</label>
+                                <label class="fancy-font" for="quest_description">Description</label>
                                 <textarea rows="2" name="quest_description" type="text" class="form-control form-item"
                                     id="edit_quest_description" placeholder="New Description" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label class="fancy_font" for="quest_rewards">Rewards</label>
+                                <label class="fancy-font" for="quest_rewards">Rewards</label>
                                 <input name="quest_rewards" type="text" class="form-control form-item" id="edit_quest_rewards"
                                     placeholder="New rewards">
                             </div>
-                            <button class="btn btn-secondary" type="submit">Add quest</button>
+                            <button class="btn btn-secondary" type="submit">Edit quest</button>
                         </form>
                     </div>
 
@@ -123,36 +124,48 @@
                 {% endfor %}
 
                 <!-- SAMPLE QUEST -->
-                <div class="card quest-card">
-                    <div class="card-header" id="questExampleTop">
-                        <h5 class="mb-0">
-                            <button class="btn fancy_font" data-toggle="collapse" data-target="#questExample"
-                                aria-controls="questExample" aria-expanded="false">
-                                Sample Quest <i class="fas fa-angle-down"></i>
-                            </button>
-                        </h5>
-                    </div>
-
-                    <div id="questExample" class="collapse show" aria-labelledby="questTop" data-parent="#accordion"
-                        aria-expanded="false">
-                        <div class="card-body">
-                            <p>Description : Our glorious leader/DM led us on a series of twisting and turning
-                                encounters in the
-                                bustling, claustrophobic alleyways of Waterdeep, trying to find clues as to the
-                                whereabouts of
-                                the stolen Arch-mage's crystal. Our next stop is to try and twist the arm of the leader
-                                of the
-                                local contingent of Zhentarim agents for information.</p>
-                            <p>Rewards : The Arch-mage promised us 500 gold pieces each and a spell scroll of Fireball
-                                :O</p>
-                            <small>Created by : Dungeon Club</small>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
 
 
 </section>
+
+<div class="page-divider"></div>
+<section class="container profile-tools mb-4">
+    <div class="row pt-4 pb-4">
+        <div class="col">
+            <h3 class="fancy-font">External Tools</h3>
+            <p>If you happen to be planning a new campaign, here is a lovely curated list that we've made for you, with some fantastic tools from the length and breadth of the web to help become the best D&D DM or player that you can be!</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h5 class="fancy-font">Map Tools</h5>
+            <ul>
+                <li><a href="https://inkarnate.com/">Inkarnate</a></li>
+                <li><a href="https://arkenforge.com/">Arkenforge</a></li>
+                <li><a href="https://donjon.bin.sh/fantasy/town/">Random Town Generator</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h5 class="fancy-font">Online Tools</h5>
+            <ul>
+                <li><a href="https://rolladie.net/">Dice Roller</a></li>
+                <li><a href="https://roll20.com">Roll20 Virtual Tabletop</a></li>
+                <li><a href="https://rolladie.net/">DnD Beyond</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h5 class="fancy-font">Miniatures/Terrain/Dice</h5>
+            <ul>
+                <li><a href="https://www.heroforge.com">Hero Forge Custom Minis</a></li>
+                <li><a href="https://dwarvenforge.com">Dwarven Forge TTRPG Terrain</a></li>
+                <li><a href="https://www.etsy.com/market/dnd_dice">Support small business with Etsy</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

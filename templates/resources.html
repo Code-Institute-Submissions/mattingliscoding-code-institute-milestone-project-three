@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+
+<section class="jumbotron jumbotron-fluid resources-hero">
+    <div class="container-fluid">
+        <div class="cta">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3 class="fancy-font">Sourcebooks and Resources</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="black-divider"></div>
+
+
+<section class="books-container mt-4 mb-4">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for book in books %}
+            <div class="col mb-4">
+                <div class="card book-card h-100">
+                    <img src="{{ book.icon }}" class="card-img-top" alt="Cover art of dungeons and dragons sourcebook">
+                    <div class="card-body">
+                        <h5 class="fancy-font card-title">{{ book.name }}</h5>
+                        <p>{{ book.type }}</p>
+                        <small class="card-text">{{ book.description }}</small>
+                        <p>£{{ book.price }}</p>
+                        <a class="buy-link" href="{{book.link}}">Purchase Here <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -41,7 +41,7 @@ def register():
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
+        session["user"] = request.form.get("username")()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
@@ -87,6 +87,27 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+# PAGE TO DELETE USERS ACCOUNT FROM DB
+@app.route("/delete_account", methods=["GET", "POST"])
+def delete_account():
+    if session.get('user'):
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+        return render_template("delete_account.html", username=username)
+
+    return redirect(url_for("login"))
+
+
+# PAGE TO CONFIRM ACCOUNT DELETION FROM DB
+@app.route("/delete_account_confirm", methods=["GET", "POST"])
+def delete_account_confirm():
+    mongo.db.users.remove({"username": session["user"]})
+    flash("User Deleted")
+    session.pop("user")
+    return redirect(url_for("register"))
+
+
 @app.route("/add_quest", methods=["GET", "POST"])
 def add_quest():
     if request.method == "POST":
@@ -109,7 +130,7 @@ def edit_quest(quest_id):
         quest = {
             "quest_name": request.form.get("quest_name"),
             "quest_description": request.form.get("quest_description"),
-            "quest_rewards": request.form.get("rewards"),
+            "quest_rewards": request.form.get("quest_rewards"),
             "created_by": session["user"]
         }
         mongo.db.quests.update({"_id": ObjectId(quest_id)}, quest)
@@ -119,11 +140,11 @@ def edit_quest(quest_id):
     return redirect(url_for("profile", username=session["user"]))
 
 
-# @app.route("/delete_quest/<quest_id>")
-# def delete_quest(quest_id):
-#     mongo.db.quests.remove({"_id": ObjectId(quest_id)})
-#     flash("Quest Successfully Deleted!")
-#     return redirect(url_for("get_quests"))
+@app.route("/delete_quest/<quest_id>")
+def delete_quest(quest_id):
+    mongo.db.quests.remove({"_id": ObjectId(quest_id)})
+    flash("Quest Successfully Deleted!")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 @app.route("/logout")
@@ -169,6 +190,23 @@ def spell_lookup():
 def article_lookup():
     article_name = request.args.get('name')
     return render_template(article_name + ".html")
+
+
+@app.route("/resources")
+def resources():
+    books = list(mongo.db.books.find())
+    return render_template("resources.html", books=books)
+
+
+# ERROR 404
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
+
+
+@app.route("/legal")
+def legal():
+    return render_template("legal.html")
 
 
 if __name__ == "__main__":

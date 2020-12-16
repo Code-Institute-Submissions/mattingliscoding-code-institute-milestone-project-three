@@ -20,7 +20,7 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand fancy_font" href="{{ url_for('index') }}">DUNGEON CLUB</a>
+        <a class="navbar-brand fancy-font" href="{{ url_for('index') }}">DUNGEON CLUB</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,10 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url_for('lookup') }}">5E SRD</a>
+					<a class="nav-link" href="{{ url_for('lookup') }}">5th Edition SRD</a>
+                </li>
+                <li class="nav-item">
+					<a class="nav-link" href="{{ url_for('resources') }}">Resources</a>
 				</li>
                 {% if session.user %}
                 <li class="nav-item">
@@ -37,6 +40,24 @@
 				</li>
                 {% endif %}
 			</ul>
+			<ul class="navbar-nav">
+                {% if session.user %}
+                <li class="nav-item">
+					<a class="btn nav-link log-button" href="{{ url_for('logout') }}">Log Out</a>
+                </li>
+                <li class="nav-item">
+					<a class="btn nav-link log-button" href="{{ url_for('delete_account', username=session['user']) }}">Delete Account</a>
+                </li>
+                {% endif %}
+                {% if session.user == null %}
+                <li class="nav-item">
+					<a class="nav-link log-button" href="{{ url_for('login') }}">Log In</a>
+				</li>
+                <li class="nav-item">
+					<a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
             <ul class="nav justify-content-center">
                 <li class="nav-item flashes">
                     {% with messages = get_flashed_messages() %}
@@ -47,19 +68,6 @@
                         {% endif %}
                     {% endwith %}
                 </li>
-            </ul>
-			<ul class="navbar-nav">
-                {% if session.user %}
-                <li class="nav-item">
-					<a class="btn nav-link log-button" href="{{ url_for('logout') }}">Log Out</a>
-				</li>
-                {% endif %}
-                <li class="nav-item">
-					<a class="btn nav-link log-button" href="{{ url_for('login') }}">Log In</a>
-				</li>
-                <li class="nav-item">
-					<a class="btn nav-link reg-button" href="{{ url_for('register') }}">Register</a>
-				</li>
             </ul>
 		</div>
 	</nav>
@@ -73,26 +81,28 @@
     </main>
 
     <div class="red-divider"></div>
-    <nav class="footer navbar navbar-dark">
-        <a class="navbar-brand fancy_font" href="{{ url_for('index') }}">BACK TO TOP</a>
-        <div class="footer-links">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-					<a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ url_for('lookup') }}">5E SRD</a>
-				</li>
+    <section class="footer">
+            <div class="container footer-links">
+                <div class="row justify-content-center">
+                <a class="nav-link footer-links" href="#">Back to top</a>
+                <a class="nav-link footer-links" href="{{ url_for('index') }}">Home</a>
+                <a class="nav-link footer-links" href="{{ url_for('lookup') }}">5th Edition SRD</a>
+                <a class="nav-link footer-links" href="{{ url_for('resources') }}">Resources</a>
                 {% if session.user %}
-                <li class="nav-item">
-					<a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-				</li>
+                <a class="nav-link footer-links" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                <a class="nav-link footer-links" href="{{ url_for('logout') }}">Log Out</a>
+                <a class="nav-link footer-links" href="{{ url_for('delete_account', username=session['user']) }}">Delete Account</a>
                 {% endif %}
-            </ul>
+                {% if session.user == null %}
+                <a class="nav-link footer-links" href="{{ url_for('login') }}">Log In</a>
+                <a class="nav-link footer-links" href="{{ url_for('register') }}">Register</a>
+                {% endif %}
+                <a class="nav-link footer-links" href="{{ url_for('legal') }}">Legal/Copyright</a>
+                </div>
+            </div>
+        </section>
 
-        </div>
-    </nav>
-  
+    
     
 
 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+
+<section class="jumbotron jumbotron-fluid profile-hero">
+    <div class="container-fluid">
+        <div class="cta">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1 class="fancy-font">Welcome, {{username}}!</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="black-divider"></div>
+
+<section class="container profile-intro">
+    <div class="row pt-4 pb-4">
+        <div class="col feature-one-text">
+            <h3 class="fancy-font">Delete your account</h3>
+            <p>Hey there adventurer! Are you sure you want to leave us?</p>
+            <a href="{{ url_for('delete_account_confirm') }}" class="btn delete-account-button">Yes, I'm sure!</a>
+            <a href="{{ url_for('profile', username=session['user']) }}" class="btn back-button">No, take me back!</a>
+        </div>
+    </div>
+   
+ 
+</section>
+
+
+
+{% endblock %}
