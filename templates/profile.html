@@ -28,7 +28,7 @@
 <div class="page-divider"></div>
 
 <!-- CHARACTER ADD CONTAINER -->
-<section class="character-wrapper container mt-4 mb-4 pb-4">
+<section class="shadow character-wrapper container mt-4 mb-4 pb-4">
     <div class="container character-form mb-4">
         <div class="row">
             <div class="col mt-4">
@@ -45,7 +45,7 @@
             <form method="POST" action="{{ url_for('add_character') }}">
                 <div class="form-group">
                     <label class="fancy-font" for="character_name">Character Name</label>
-                    <input name="character_name" type="text" class="form-control form-item" id="character_name" placeholder="Steve" required />
+                    <input name="character_name" type="text" class="form-control form-item" id="character_name" placeholder="Bob the Destroyer" required />
                 </div>
                 <div class="form-group">
                     <label class="fancy-font" for="character_avatar">Avatar URL</label>
@@ -294,7 +294,7 @@
         <div class="row row-cols-1 row-cols-md-3">
             {% for character in characters %} {% if session.user|lower == character.created_by|lower %}
             <div class="col mb-4">
-                <div class="shadow card character-card h-100">
+                <div class="card character-card h-100">
                     <img src="{{ character.character_avatar }}" class="card-img-top" alt="character avatar" />
                     <div class="card-body">
                         <h5 class="card-title">{{ character.character_name }}</h5>
@@ -364,7 +364,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_hp">Max HP</label>
-                                    <input name="character_hp" type="text" class="form-control form-item" id="edit_character_hp" placeholder="New max HP" required />
+                                    <input name="character_hp" type="text" class="form-control form-item" id="edit_character_hp" placeholder="New max" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_str">Strength</label>
@@ -587,8 +587,10 @@
     </div>
 </section>
 
+<div class="page-divider"></div>
+
 <!-- QUEST TO-DO CONTAINER -->
-<section class="quest-wrapper container mt-4 mb-4 pb-4">
+<section class="shadow quest-wrapper container mt-4 mb-4 pb-4">
     <div class="container quest-form mb-4">
         <div class="row">
             <div class="col mt-4">
@@ -634,7 +636,7 @@
                 {% for quest in quests %} {% if session.user|lower == quest.created_by|lower %}
 
                 <!-- TOP QUEST CARD & EDIT/DELETE FUNCTION BUTTONS -->
-                <div class="card shadow quest-card">
+                <div class="card quest-card">
                     <div class="card-header" id="questTop">
                         <h5>
                             <a class="btn fancy-font quest_name" data-toggle="collapse" href="#target{{quest._id}}" data-target="#target{{quest._id}}" aria-controls="target{{quest._id}}" aria-expanded="false">

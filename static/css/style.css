@@ -335,7 +335,8 @@ td {
     color: #8e0101;
 }
 
-.quest-wrapper {
+.quest-wrapper,
+.character-wrapper {
     height: 100%;
     width: auto;
     border-radius: 8px;
@@ -374,6 +375,7 @@ td {
 .character-card {
     background-color: #ffffff6b;
 }
+
 
 /* BACKGROUND/HERO POSITIONING */
 
