@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 {% extends "base.html" %} {% block content %}
 
-<section class="jumbotron jumbotron-fluid profile-hero">
+<div class="jumbotron jumbotron-fluid profile-hero">
     <div class="container-fluid">
         <div class="cta">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -9,15 +8,15 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 <div class="black-divider"></div>
 
-<section class="container profile-intro">
+<div class="container profile-intro">
     <div class="row pt-4 pb-4">
         <div class="col feature-one-text">
             <h3 class="fancy-font">Sorry, it seems that pesky 404 has struck once more.</h3>
             <a href="{{ url_for('index') }}" class="btn">Back Home</a>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

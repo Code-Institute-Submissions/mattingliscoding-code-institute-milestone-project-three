@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 {% extends "base.html" %} {% block content %}
 
-<section class="jumbotron jumbotron-fluid lookup-hero">
+<div class="jumbotron jumbotron-fluid lookup-hero">
     <div class="container-fluid">
         <div class="cta">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -13,10 +12,10 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 <div class="black-divider"></div>
 
-<section class="lookup-body">
+<div class="lookup-body">
     <div class="row" id="body-row">
         <!-- Sidebar -->
         <div id="sidebar-container" class="sidebar-expanded">
@@ -27,12 +26,14 @@
                 </li>
 
                 <!-- RACES -->
-                <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="menu-collapsed">Races</span>
-                        <span class="fas fa-angle-down ml-auto"></span>
-                    </div>
-                </a>
+                <li>
+                    <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+                        class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-collapsed">Races</span>
+                            <span class="fas fa-angle-down ml-auto"></span>
+                        </div>
+                    </a>
                 <!-- RACES SUBMENU -->
                 <div id="submenu1" class="collapse submenu">
                     <a href="{{ url_for('race_lookup', name='Race Basics') }}" class="list-group-item list-group-item-action">
@@ -66,240 +67,271 @@
                         <span class="menu-collapsed">Tiefling</span>
                     </a>
                 </div>
+                </li>
 
                 <!-- CLASSES -->
-                <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="menu-collapsed">Classes</span>
-                        <span class="fas fa-angle-down ml-auto"></span>
+                <li>
+                    <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+                        class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-collapsed">Classes</span>
+                            <span class="fas fa-angle-down ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- CLASSES SUBMENU -->
+                    <div id="submenu2" class="collapse submenu">
+                        <a href="{{ url_for('class_lookup', name='Barbarian') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Barbarian</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Bard') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Bard</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Cleric') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Cleric</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Druid') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Druid</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Fighter') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Fighter</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Monk') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Monk</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Paladin') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Paladin</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Ranger') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Ranger</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Rogue') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Rogue</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Sorcerer') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Sorcerer</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Warlock') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Warlock</span>
+                        </a>
+                        <a href="{{ url_for('class_lookup', name='Wizard') }}" class="list-group-item list-group-item-action">
+                            <span class="menu-collapsed">Wizard</span>
+                        </a>
                     </div>
-                </a>
-                <!-- CLASSES SUBMENU -->
-                <div id="submenu2" class="collapse submenu">
-                    <a href="{{ url_for('class_lookup', name='Barbarian') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Barbarian</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Bard') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Bard</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Cleric') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Cleric</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Druid') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Druid</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Fighter') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Fighter</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Monk') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Monk</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Paladin') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Paladin</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Ranger') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Ranger</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Rogue') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Rogue</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Sorcerer') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Sorcerer</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Warlock') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Warlock</span>
-                    </a>
-                    <a href="{{ url_for('class_lookup', name='Wizard') }}" class="list-group-item list-group-item-action">
-                        <span class="menu-collapsed">Wizard</span>
-                    </a>
-                </div>
+                </li>
 
                 <!-- SPELLS MENU -->
-                <a href="#submenu3" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="menu-collapsed">Spells</span>
-                        <span class="fas fa-angle-down ml-auto"></span>
-                    </div>
-                </a>
-                <!-- SPELLS SUBMENUS -->
-                <div id="submenu3" class="collapse submenu">
-                    <!-- CANTRIP MENU -->
-                    <a href="#cantrips" data-toggle="collapse" aria-expanded="false" class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                <li>
+                    <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
+                        class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="menu-collapsed">Cantrips</span>
+                            <span class="menu-collapsed">Spells</span>
                             <span class="fas fa-angle-down ml-auto"></span>
                         </div>
                     </a>
-
-                    <div id="cantrips" class="collapse submenu">
-                        <a href="{{ url_for('spell_lookup', name='Acid Splash') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Acid Splash</span>
+                    <!-- SPELLS SUBMENUS -->
+                    <div id="submenu3" class="collapse submenu">
+                        <!-- CANTRIP MENU -->
+                        <a href="#cantrips" data-toggle="collapse" aria-expanded="false"
+                            class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="menu-collapsed">Cantrips</span>
+                                <span class="fas fa-angle-down ml-auto"></span>
+                            </div>
                         </a>
-                        <a href="{{ url_for('spell_lookup', name='Blade Ward') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Blade Ward</span>
+                
+                        <div id="cantrips" class="collapse submenu">
+                            <a href="{{ url_for('spell_lookup', name='Acid Splash') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Acid Splash</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Blade Ward') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Blade Ward</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Chill Touch') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Chill Touch</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Dancing Lights') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Dancing Lights</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Druidcraft') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Druidcraft</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Eldritch Blast') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Eldritch Blast</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Fire Bolt') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Fire Bolt</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Friends') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Friends</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Guidance') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Guidance</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Light') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Light</span>
+                            </a>
+                        </div>
+                        <!-- LEVEL ONE MENU -->
+                        <a href="#level_one" data-toggle="collapse" aria-expanded="false"
+                            class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="menu-collapsed">1st Level</span>
+                                <span class="fas fa-angle-down ml-auto"></span>
+                            </div>
                         </a>
-                        <a href="{{ url_for('spell_lookup', name='Chill Touch') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Chill Touch</span>
+                
+                        <div id="level_one" class="collapse submenu">
+                            <a href="{{ url_for('spell_lookup', name='Alarm') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Alarm</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Animal Friendship') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Animal Friendship</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Bane') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Bane</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Bless') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Bless</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Burning Hands') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Burning Hands</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Charm Person') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Charm Person</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Color Spray') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Color Spray</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Command') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Command</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Comprehend Languages') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Comprehend Languages</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Create or Destroy Water') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Create or Destroy Water</span>
+                            </a>
+                        </div>
+                        <!-- LEVEL TWO MENU -->
+                        <a href="#level_two" data-toggle="collapse" aria-expanded="false"
+                            class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="menu-collapsed">2nd Level</span>
+                                <span class="fas fa-angle-down ml-auto"></span>
+                            </div>
                         </a>
-                        <a href="{{ url_for('spell_lookup', name='Dancing Lights') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Dancing Lights</span>
+                
+                        <div id="level_two" class="collapse submenu">
+                            <a href="{{ url_for('spell_lookup', name='Alter Self') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Alter Self</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Animal Messenger') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Animal Messenger</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Arcane Lock') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Arcane Lock</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Augury') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Augury</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Barkskin') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Barkskin</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Beast Sense') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Beast Sense</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Blindness Deafness') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Blindness Deafness</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Blur') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Blur</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Branding Smite') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Branding Smite</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Calm Emotions') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Calm Emotions</span>
+                            </a>
+                        </div>
+                        <!-- LEVEL THREE MENU -->
+                        <a href="#level_three" data-toggle="collapse" aria-expanded="false"
+                            class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="menu-collapsed">3rd Level</span>
+                                <span class="fas fa-angle-down ml-auto"></span>
+                            </div>
                         </a>
-                        <a href="{{ url_for('spell_lookup', name='Druidcraft') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Druidcraft</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Eldritch Blast') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Eldritch Blast</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Fire Bolt') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Fire Bolt</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Friends') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Friends</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Guidance') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Guidance</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Light') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Light</span>
-                        </a>
+                
+                        <div id="level_three" class="collapse submenu">
+                            <a href="{{ url_for('spell_lookup', name='Animate Dead') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Animate Dead</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Aura Of Vitality') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Aura Of Vitality</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Beacon Of Hope') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Beacon Of Hope</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Bestow Curse') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Bestow Curse</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Blinding Smite') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Blinding Smite</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Blink') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Blink</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Call Lightning') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Call Lightning</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Clairvoyance') }}" class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Clairvoyance</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Conjure Animals') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Conjure Animals</span>
+                            </a>
+                            <a href="{{ url_for('spell_lookup', name='Conjure Barrage') }}"
+                                class="list-group-item list-group-item-action">
+                                <span class="menu-collapsed">Conjure Barrage</span>
+                            </a>
+                        </div>
                     </div>
-                    <!-- LEVEL ONE MENU -->
-                    <a href="#level_one" data-toggle="collapse" aria-expanded="false" class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                </li>
+                <li>
+                    <a href="{{ url_for('article_lookup', name='customization') }}"
+                        class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="menu-collapsed">1st Level</span>
-                            <span class="fas fa-angle-down ml-auto"></span>
+                            <span class="menu-collapsed">Customization</span>
                         </div>
                     </a>
-
-                    <div id="level_one" class="collapse submenu">
-                        <a href="{{ url_for('spell_lookup', name='Alarm') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Alarm</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Animal Friendship') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Animal Friendship</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Bane') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Bane</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Bless') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Bless</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Burning Hands') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Burning Hands</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Charm Person') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Charm Person</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Color Spray') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Color Spray</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Command') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Command</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Comprehend Languages') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Comprehend Languages</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Create or Destroy Water') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Create or Destroy Water</span>
-                        </a>
-                    </div>
-                    <!-- LEVEL TWO MENU -->
-                    <a href="#level_two" data-toggle="collapse" aria-expanded="false" class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                    <a href="{{ url_for('article_lookup', name='personalization') }}"
+                        class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="menu-collapsed">2nd Level</span>
-                            <span class="fas fa-angle-down ml-auto"></span>
+                            <span class="menu-collapsed">Personalization</span>
                         </div>
                     </a>
-
-                    <div id="level_two" class="collapse submenu">
-                        <a href="{{ url_for('spell_lookup', name='Alter Self') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Alter Self</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Animal Messenger') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Animal Messenger</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Arcane Lock') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Arcane Lock</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Augury') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Augury</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Barkskin') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Barkskin</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Beast Sense') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Beast Sense</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Blindness Deafness') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Blindness Deafness</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Blur') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Blur</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Branding Smite') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Branding Smite</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Calm Emotions') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Calm Emotions</span>
-                        </a>
-                    </div>
-                    <!-- LEVEL THREE MENU -->
-                    <a href="#level_three" data-toggle="collapse" aria-expanded="false" class="bg-submenu list-group-item list-group-item-action flex-column align-items-start">
+                    <a href="{{ url_for('article_lookup', name='combat') }}"
+                        class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="menu-collapsed">3rd Level</span>
-                            <span class="fas fa-angle-down ml-auto"></span>
+                            <span class="menu-collapsed">Combat</span>
                         </div>
                     </a>
-
-                    <div id="level_three" class="collapse submenu">
-                        <a href="{{ url_for('spell_lookup', name='Animate Dead') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Animate Dead</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Aura Of Vitality') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Aura Of Vitality</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Beacon Of Hope') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Beacon Of Hope</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Bestow Curse') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Bestow Curse</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Blinding Smite') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Blinding Smite</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Blink') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Blink</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Call Lightning') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Call Lightning</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Clairvoyance') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Clairvoyance</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Conjure Animals') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Conjure Animals</span>
-                        </a>
-                        <a href="{{ url_for('spell_lookup', name='Conjure Barrage') }}" class="list-group-item list-group-item-action">
-                            <span class="menu-collapsed">Conjure Barrage</span>
-                        </a>
-                    </div>
-                </div>
-
-                <a href="{{ url_for('article_lookup', name='customization') }}" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="menu-collapsed">Customization</span>
-                    </div>
-                </a>
-                <a href="{{ url_for('article_lookup', name='personalization') }}" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="menu-collapsed">Personalization</span>
-                    </div>
-                </a>
-                <a href="{{ url_for('article_lookup', name='combat') }}" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="menu-collapsed">Combat</span>
-                    </div>
-                </a>
+                </li>
             </ul>
         </div>
 
@@ -367,6 +399,6 @@
         </div>
     </div>
     <!-- body-row END -->
-</section>
+</div>
 
 {% endblock %}
