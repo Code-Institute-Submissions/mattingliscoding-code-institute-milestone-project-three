@@ -53,6 +53,7 @@ With regards to the dataset used in the site from the D&D 5th Edition SRD, given
 Also in the future, I would like to add a public messageboard/forum application for the site, to move further into the field of social networking, with more in-depth user profiles.
 
 # Technologies Used
+
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 - [Werkzeug](https://pypi.org/project/Werkzeug/)

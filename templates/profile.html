@@ -336,39 +336,41 @@
                             <form method="POST" action="{{ url_for('edit_character', character_id=character._id) }}">
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_name">Character Name</label>
-                                    <input name="character_name" type="text" class="form-control form-item" id="edit_character_name" placeholder="New name" required />
+                                    <input name="character_name" type="text" class="form-control form-item" id="edit_character_name" value="{{ character.character_name }}" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_avatar">Avatar Link</label>
-                                    <input name="character_avatar" type="text" class="form-control form-item" id="edit_character_avatar" placeholder="New image url" required />
+                                    <input name="character_avatar" type="text" class="form-control form-item" id="edit_character_avatar" value="{{ character.character_avatar }}" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_race">Race</label>
-                                    <input name="character_race" type="text" class="form-control form-item" id="edit_character_race" placeholder="New race" required />
+                                    <input name="character_race" type="text" class="form-control form-item" id="edit_character_race" value="{{ character.character_race }}" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_class">Class</label>
-                                    <input name="character_class" type="text" class="form-control form-item" id="edit_character_class" placeholder="New class" required />
+                                    <input name="character_class" type="text" class="form-control form-item" id="edit_character_class" value="{{ character.character_class }}" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_level">Level</label>
-                                    <input name="character_level" type="text" class="form-control form-item" id="edit_character_level" placeholder="New level" required />
+                                    <input name="character_level" type="text" class="form-control form-item" id="edit_character_level" value="{{ character.character_level }}" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_alignment">Alignment</label>
-                                    <input name="character_alignment" type="text" class="form-control form-item" id="edit_character_alignment" placeholder="New alignment" required />
+                                    <input name="character_alignment" type="text" class="form-control form-item" id="edit_character_alignment" value="{{ character.character_alignment }}" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_ac">Armor Class</label>
-                                    <input name="character_ac" type="text" class="form-control form-item" id="edit_character_ac" placeholder="New AC" required />
+                                    <input name="character_ac" type="text" class="form-control form-item" id="edit_character_ac" value="{{ character.character_ac }}" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_hp">Max HP</label>
-                                    <input name="character_hp" type="text" class="form-control form-item" id="edit_character_hp" placeholder="New max" required />
+                                    <input name="character_hp" type="text" class="form-control form-item" id="edit_character_hp" value="{{ character.character_hp }}" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_str">Strength</label>
                                     <select class="form-control" id="edit_character_str" name="character_str">
+                                        <option>{{ character.character_str }}</option>
+                                        <option value="none" disabled></option>
                                         <option>1 (-5)</option>
                                         <option>2 (-4)</option>
                                         <option>3 (-4)</option>
@@ -404,6 +406,8 @@
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_int">Intelligence</label>
                                     <select class="form-control" id="edit_character_int" name="character_int">
+                                        <option>{{ character.character_int }}</option>
+                                        <option value="none" disabled></option>
                                         <option>1 (-5)</option>
                                         <option>2 (-4)</option>
                                         <option>3 (-4)</option>
@@ -439,6 +443,8 @@
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_dex">Dexterity</label>
                                     <select class="form-control" id="edit_character_dex" name="character_dex">
+                                        <option>{{ character.character_dex }}</option>
+                                        <option value="none" disabled></option>
                                         <option>1 (-5)</option>
                                         <option>2 (-4)</option>
                                         <option>3 (-4)</option>
@@ -474,6 +480,8 @@
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_wis">Wisdom</label>
                                     <select class="form-control" id="edit_character_wis" name="character_wis">
+                                        <option>{{ character.character_wis }}</option>
+                                        <option value="none" disabled></option>
                                         <option>1 (-5)</option>
                                         <option>2 (-4)</option>
                                         <option>3 (-4)</option>
@@ -509,6 +517,8 @@
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_con">Constitution</label>
                                     <select class="form-control" id="edit_character_con" name="character_con">
+                                        <option>{{ character.character_con }}</option>
+                                        <option value="none" disabled></option>
                                         <option>1 (-5)</option>
                                         <option>2 (-4)</option>
                                         <option>3 (-4)</option>
@@ -544,6 +554,8 @@
                                 <div class="form-group">
                                     <label class="fancy-font" for="character_cha">Charisma</label>
                                     <select class="form-control" id="edit_character_cha" name="character_cha">
+                                        <option>{{ character.character_cha }}</option>
+                                        <option value="none" disabled></option>
                                         <option>1 (-5)</option>
                                         <option>2 (-4)</option>
                                         <option>3 (-4)</option>
@@ -651,16 +663,16 @@
                     <div class="card-body collapse mt-2" id="edit{{quest._id}}">
                         <form method="POST" action="{{ url_for('edit_quest', quest_id=quest._id) }}">
                             <div class="form-group">
-                                <label class="fancy-font" for="quest_name">Quest Title</label>
-                                <input name="quest_name" type="text" class="form-control form-item" id="edit_quest_name" placeholder="New title" required />
+                                <label class="fancy-font" for="quest_name">New Quest Title</label>
+                                <input name="quest_name" type="text" class="form-control form-item" id="edit_quest_name" value="{{ quest.quest_name }}" required />
                             </div>
                             <div class="form-group">
-                                <label class="fancy-font" for="quest_description">Description</label>
-                                <textarea rows="2" name="quest_description" type="text" class="form-control form-item" id="edit_quest_description" placeholder="New Description" required></textarea>
+                                <label class="fancy-font" for="quest_description">New Description</label>
+                                <textarea rows="2" name="quest_description" type="text" class="form-control form-item" id="edit_quest_description" required>{{ quest.quest_description }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label class="fancy-font" for="quest_rewards">Rewards</label>
-                                <input name="quest_rewards" type="text" class="form-control form-item" id="edit_quest_rewards" placeholder="New rewards" />
+                                <label class="fancy-font" for="quest_rewards">New Rewards</label>
+                                <input name="quest_rewards" type="text" class="form-control form-item" id="edit_quest_rewards" value="{{ quest.quest_rewards }}" />
                             </div>
                             <button class="btn btn-secondary" type="submit">Edit quest</button>
                         </form>
