@@ -153,6 +153,10 @@ main {
     text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
+.feature-one-list{
+    list-style-type: square;
+}
+
 .feature-two {
     min-height: 300px;
     width: auto;
