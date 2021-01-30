@@ -74,8 +74,8 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/profile/", methods=["GET", "POST"])
+def profile():
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -99,7 +99,7 @@ def logout():
 
 
 # PAGE TO DELETE USERS ACCOUNT FROM DB
-@app.route("/delete_account", methods=["GET", "POST"])
+@app.route("/account/delete", methods=["GET", "POST"])
 def delete_account():
     if session.get('user'):
         username = mongo.db.users.find_one(
@@ -111,7 +111,7 @@ def delete_account():
 
 
 # PAGE TO CONFIRM ACCOUNT DELETION FROM DB
-@app.route("/delete_account_confirm", methods=["GET", "POST"])
+@app.route("/account/delete-confirm", methods=["GET", "POST"])
 def delete_account_confirm():
     mongo.db.users.remove({"username": session["user"]})
     flash("User Deleted")
@@ -120,7 +120,7 @@ def delete_account_confirm():
 
 
 # ADD/EDIT/DELETE QUEST ROUTES
-@app.route("/add_quest", methods=["GET", "POST"])
+@app.route("/quest/add", methods=["GET", "POST"])
 def add_quest():
     if request.method == "POST":
         quest = {
@@ -133,10 +133,10 @@ def add_quest():
         flash("Task Successfully Added!")
         return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("add_quest.html")
+    return render_template("profile", username=session["user"])
 
 
-@app.route("/add_quest/<quest_id>", methods=["GET", "POST"])
+@app.route("/quest/<quest_id>/edit", methods=["GET", "POST"])
 def edit_quest(quest_id):
     if request.method == "POST":
         quest = {
@@ -152,7 +152,7 @@ def edit_quest(quest_id):
     return redirect(url_for("profile", username=session["user"]))
 
 
-@app.route("/delete_quest/<quest_id>")
+@app.route("/quest/<quest_id>/delete")
 def delete_quest(quest_id):
     mongo.db.quests.remove({"_id": ObjectId(quest_id)})
     flash("Quest Successfully Deleted!")
@@ -160,7 +160,7 @@ def delete_quest(quest_id):
 
 
 # CHARACTER ADD
-@app.route("/add_character", methods=["GET", "POST"])
+@app.route("/character/add", methods=["GET", "POST"])
 def add_character():
     if request.method == "POST":
         character = {
@@ -184,10 +184,10 @@ def add_character():
         flash("Character Successfully Added!")
         return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("add_character.html")
+    return render_template("profile", username=session["user"])
 
 
-@app.route("/add_character/<character_id>", methods=["GET", "POST"])
+@app.route("/character/<character_id>/edit", methods=["GET", "POST"])
 def edit_character(character_id):
     if request.method == "POST":
         character = {
@@ -214,7 +214,7 @@ def edit_character(character_id):
     return redirect(url_for("profile", username=session["user"]))
 
 
-@app.route("/delete_character/<character_id>")
+@app.route("/character/<character_id>/delete")
 def delete_character(character_id):
     mongo.db.characters.remove({"_id": ObjectId(character_id)})
     flash("Character Successfully Deleted!")
