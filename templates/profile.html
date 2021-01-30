@@ -368,12 +368,12 @@
                             <a href="{{ url_for('delete_character', character_id=character._id) }}" class="btn delete-button">Delete</a>
                         </h5>
                         <!-- EDIT CHARACTER MODAL -->
-                        <div class="modal fade" id="edit{{character._id}}" tabindex="-1" role="dialog" aria-labelledby="editCharacterFormTitle"
+                        <div class="modal fade" id="edit{{character._id}}" tabindex="-1" role="dialog" aria-labelledby="editCharacterFormTitle{{character._id}}"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title heading" id="editCharacterFormTitle">Edit Character</h5>
+                                        <h5 class="modal-title heading" id="editCharacterFormTitle{{character._id}}">Edit Character</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -740,12 +740,12 @@
                     </div>
 
                     <!-- EDIT QUEST MODAL -->
-                    <div class="modal fade" id="edit{{quest._id}}" tabindex="-1" role="dialog" aria-labelledby="editQuestTitle"
+                    <div class="modal fade" id="edit{{quest._id}}" tabindex="-1" role="dialog" aria-labelledby="editQuestTitle{{quest._id}}"
                         aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title heading" id="editQuestTitle">Edit Quest</h5>
+                                    <h5 class="modal-title heading" id="editQuestTitle{{quest._id}}">Edit Quest</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
