@@ -32,7 +32,7 @@ The dataset for this project is stored in a MongoDB Cluster, with 7 collections 
 ## Collections relevant to the game (D&D)
 * **Races, Classes & Spells** - These collections are used in the 5th Edition Database Lookup page, where the user would go to find information to aid them in their playing or running the game of D&D. They are unrelated to the user's data and are publicly accessible with no authentication needed. The data is called via PyMongo and the Jinja templating language to populate the card on the page dynamically. You can see an example of the usage of this in this image: 
 
-![Image of databse code example](https://i.imgur.com/4NaV4Js.png)
+    ![Image of databse code example](https://i.imgur.com/4NaV4Js.png)
 
 * **Books** - This dataset is purely standalone, and meant as a separate resource for players to see products available for the game, with details on pricing and a link to purchase.
 
@@ -109,7 +109,8 @@ Also in the future, I would like to add a public messageboard/forum application 
     ![Modal popup example](https://i.imgur.com/U7AGxnz.png)
     * **Testing/Bug 2** - Another issue with the Character feature was the inclusion of the HTML tables in the card deck to display stats. The table was extending out of the bounds of the card and pushing whitespace out to the right hand side of the screen, which of course looked terrible and needed a suitable fix. 
     * **Result** - To fix this, I needed to utilise the CSS property ```overflow-x:auto;``` and set it to a table container class for use across the site (I encountered a similar problem on the article text on the Lookup page which has many sets of stats in tables). This allowed the table to have its own horizontal scrollbar and the card deck kept a uniform dimensions across different screen resolutions. This can be seen in this screenshot:
-    ![Scrollable table example](https://i.imgur.com/0StKmYi.png)
+
+        ![Scrollable table example](https://i.imgur.com/0StKmYi.png)
     * **Testing/Bug 3** - The most prominent issue found with the Character and Quest features was an oversight in my UX. Upon trying to edit their entry, the edit form did not contain their previously entered values. The edit form simply had blank inputs with placeholder text, similar to the Add Character form, except with a different route/function connected to the Submit button.
     * **Result** - To rectify this glaring UX issue, I found that the answer was frustratingly obvious. For the forms on the page, Jinja for/if loops are used to loop through any characters or quests found in the database and then ascertain if they belong to the user stored in the session cache. If this is found to be true, then their items data is populated onto the cards. The editing and deleting of these items is then handled by using each Character or Quests specific unique ID that is generated and assigned to it by MongoDB. Using this in the Jinja language of the HTML allowed me to ensure that the correllating values were being edited and also to replace ```placeholder="{{ character.character_name }}"``` with ```value="{{ character.character_name }}"```.
     
@@ -143,8 +144,11 @@ All site links, internal and external have been manually checked and tested thor
 
 ## Responsive Design Testing
 The site was extensively tested on a range of devices and screen-sizes, and was regularly tested during development, using Google Chrome DevTools. The range of responsive design can be seen in the prototype image at the top of this document but I will also include some screenshots from DevTools here from testing:
+
 ![Site on Phone display](https://i.imgur.com/9vjYgVDl.png)
+
 ![Site on Tablet display](https://i.imgur.com/FUH9cY7l.png)
+
 ![Login on Phone display](https://i.imgur.com/329ksSTl.png)
 
 ## Debugging
