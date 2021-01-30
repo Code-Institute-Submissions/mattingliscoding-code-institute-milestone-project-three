@@ -2,7 +2,7 @@
 
 ## *Dungeon Club - A resource/database site for players of Dungeons and Dragons 5th Edition.*
 
-![Image of Yaktocat](https://i.imgur.com/43YfaMH.png)
+![Image of Site Concept](https://i.imgur.com/43YfaMH.png)
 
 ## Deployed link via Heroku: https://matt-inglis-ms3.herokuapp.com/
 
@@ -23,14 +23,25 @@ One of the first things I did was to try to find other websites that were doing 
 
 I opted for a simple Bootstrap 4-oriented design, to focus on functionality and the maximising the easy access to the dataset, created via MongoDB Atlas. Due to the specified nature of the site, I wanted it to be simple and smooth for players of the game to arrive and instantly know where they needed to navigate to search for the information they needed for their gaming experience.
 
-## User Stories
+# Database
 
-* As a user of Dungeon Club, I would like to quickly navigate through the menu to pull up the information I need.
-* As a user, I would like the process of making an account be simple and secure.
-* As a user, I would like to see a list of currently available products for the game, with images, descriptions, prices and easy links to purchase them.
-* As a user, I would like to have a place to store characters I've made for various games I've been a part of.
-* As a user, I would like to be able to keep a to-do list/log of current missions and quests I have undertaken during my games.
-* As a user, I would like to be able to delete my account with minimal fuss.
+The dataset for this project is stored in a MongoDB Cluster, with 7 collections being accessed in three places across the site. Since MongoDB is a NoSQL service, there is no set schema for the dataset but I have broken the data up into two main categories as seen in this graphic: 
+
+![Image of database graphic](https://i.imgur.com/4vjtqRF.png)
+
+## Collections relevant to the game (D&D)
+* **Races, Classes & Spells** - These collections are used in the 5th Edition Database Lookup page, where the user would go to find information to aid them in their playing or running the game of D&D. They are unrelated to the user's data and are publicly accessible with no authentication needed. The data is called via PyMongo and the Jinja templating language to populate the card on the page dynamically. You can see an example of the usage of this in this image: 
+
+![Image of databse code example](https://i.imgur.com/4NaV4Js.png)
+
+* **Books** - This dataset is purely standalone, and meant as a separate resource for players to see products available for the game, with details on pricing and a link to purchase.
+
+## Collections relevant to the user
+
+* **Users** - The user collection utilises password hashing via the security package installed with Werkzeug in Python. The two imported Werkzeug functions (generate_password_hash and check_password_hash) provide secure user authentication by storing secure passwords with salted hashes and later verifying an entered user password in plaintext against it's password hash to authenticate user.
+In addition, via a Jinja loop, the User's "created_by" value is compared against the session.user result (session being a function imported from Flask) in order to ensure the custom Characters and Quests correllate and are showing to the correct user.
+
+* **Characters & Quests** - The data in these collections are what the User is responsible for the addition, alteration and deletion of on the site and as such, this feature ensures that the Dungeon Club site can be considered as a CRUD project. As stated before, the "created_by" field is crucial in ensuring the User is being displayed the correct content they have created.
 
 # Features
 * **Navigation bar, with brand and page links (All pages)** - This header was created using Bootstrap, and gives the user a clear point of navigation control and is focused on ease-of-use. The collapse feature from Bootstrap also features heavily across the site, helping to keep the site expandable and accessible on smaller screens.
@@ -41,8 +52,7 @@ I opted for a simple Bootstrap 4-oriented design, to focus on functionality and 
 * **5th Edition Database Page - Data Populated Card** - The selection from the menu is triggering the respective function inside the Python app file, using Flask to query the database. The card on screen is then populated via loops using the Jinja templating language to display the stored information from the MongoDB collection for the chosen document.
 ![Screenshot of database display cards](https://i.imgur.com/Ra79HmJ.png)
 * **Resources Page** - The cards on the resources page are once again utilising the Jinja loops to fetch and display the information for each of the products listed. The Jinja loops iterates over one Bootstrap Card Deck element in the HTML and fills the page with all the products available.
-* **Profile Page - Quest To-Do App** - The feature to add a quest allows the user to keep a log of their games missions and objectives in a handy to-do format, using a Bootstrap form. The inputs are stored in a MongoDB collection and then redistributed to the drop-down card where the user can see their new quest, and edit/delete as they see fit, as you can see from this image:
-![Screenshot of to-do form/cards](https://i.imgur.com/eTlw6gt.png)
+* **Profile Page - Quest To-Do App** - The feature to add a quest allows the user to keep a log of their games missions and objectives in a handy to-do format, using a Bootstrap form in a modal. The inputs are stored in a MongoDB collection and then redistributed to the drop-down card where the user can see their new quest, and edit/delete as they see fit.
 * **Profile Page - Character Creation** - The 'Add Character' functionality allows the user to store their own characters/stats to be accessed easily and displayed neatly. I once more utilisted a Bootstrap card deck feature here that is populated with the information filled in from the HTML form. The Python function collects data from the form and stores it to be iterated over by the Jinja loop that fills out the cards, as can be seen in the following image:
 ![Screenshot of character cards](https://i.imgur.com/DmkO7O8.png)
 * **Register/Login Pages** - These pages were designed intentionally simple to enable the user to access their profile as quickly as possible.
@@ -66,6 +76,15 @@ Also in the future, I would like to add a public messageboard/forum application 
 - [Google Fonts](https://fonts.google.com/)
 
 # Testing
+
+## User Stories
+* As a user of Dungeon Club, I would like to quickly navigate through the menu to pull up the information I need.
+* As a user, I would like the process of making an account be simple and secure.
+* As a user, I would like to see a list of currently available products for the game, with images, descriptions, prices and easy links to purchase them.
+* As a user, I would like to have a place to store characters I've made for various games I've been a part of.
+* As a user, I would like to be able to keep a to-do list/log of current missions and quests I have undertaken during my games.
+* As a user, I would like to be able to delete my account with minimal fuss.
+
 ## Code Validation & Known Errors
 All HTML/CSS files for the site were formatted using [this free online formatter](https://www.freeformatter.com/html-formatter.html), then validated via [W3C Markup Validation Service](https://validator.w3.org/). The W3C check did spring some errors in the code but when checked through, they were all as a result of the bad functionality for validating Jinja Templating language, and any other errors were rectified.
 
