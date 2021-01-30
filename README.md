@@ -77,16 +77,62 @@ Also in the future, I would like to add a public messageboard/forum application 
 
 # Testing
 
-## User Stories
-* As a user of Dungeon Club, I would like to quickly navigate through the menu to pull up the information I need.
-* As a user, I would like the process of making an account be simple and secure.
-* As a user, I would like to see a list of currently available products for the game, with images, descriptions, prices and easy links to purchase them.
-* As a user, I would like to have a place to store characters I've made for various games I've been a part of.
-* As a user, I would like to be able to keep a to-do list/log of current missions and quests I have undertaken during my games.
-* As a user, I would like to be able to delete my account with minimal fuss.
+## User Stories & Feature Testing
+* **Expected** - As a user of Dungeon Club, I would like to quickly navigate through the 5E Lookup menu to pull up the information I need for my game.
+    * **Testing/Bugs** - Initially, the cascading drop-down had issues with regards to the growing complexity of the id's and data-targets required by the Bootstap Collapse functionality. Leading to the user would click to open one drop-down and none of the others would automatically close, leading to a bloated and confusing menu. 
+    * **Result** - User is able to navigate using the drop-down menu on desktop (left of screen) and mobile screen (top of screen) sizes and select the entry they wish to have displayed. 
+* **Expected** - As a user, I would like the process of making an account be simple and secure.
+    * **Testing** - Werkzeug Security provides safe hashing for password protection and therefore, when a new user clicks the register button and fills in the information, their account is created in the MongoDB users collection complete with secure password.
+    With regards to secure account deletion, the session functionality from Flask allows for easy removal of accounts using a function that checks the session.user is correct and they are allowed to continue with the account deletion:
+        ```
+        def delete_account():
+            if session.get('user'):
+                username = mongo.db.users.find_one(
+                    {"username": session["user"]})["username"]
+
+                return render_template("delete_account.html", username=username)
+
+            return redirect(url_for("login"))
+        ```
+        When the user confirms their deletion request on the subsequent page, the following code (session.pop()) ensures that the user is removed from the browser cache. This further protects the user's information. 
+        ```
+        @app.route("/account/delete-confirm", methods=["GET", "POST"])
+        def delete_account_confirm():
+            mongo.db.users.remove({"username": session["user"]})
+            flash("User Deleted")
+            session.pop("user")
+            return redirect(url_for("register"))
+        ```
+* **Expected** - As a user, I would like to have a place to store characters I've made for various games I've been a part of. I would also like to be able to keep a to-do list/log of current missions and quests I have undertaken during my games.
+    * **Testing/Bug 1** - I experienced a visual bug whereby a user would expand their character card in order to use the EDIT function. The nature of the Bootstrap Collapse functionality and my usage of it meant that all the character cards at once would extend down the page rather than just the one in use. 
+    * **Result** - In order to rectify this, improve UX and also to create a much more familiar process for web form submission, I implemented Bootstrap Modal pop-ups instead for the editing of both Character and Quest items. This is a great improvement to this feature. You can see the results in this image: 
+    ![Modal popup example](https://i.imgur.com/U7AGxnz.png)
+    * **Testing/Bug 2** - Another issue with the Character feature was the inclusion of the HTML tables in the card deck to display stats. The table was extending out of the bounds of the card and pushing whitespace out to the right hand side of the screen, which of course looked terrible and needed a suitable fix. 
+    * **Result** - To fix this, I needed to utilise the CSS property ```overflow-x:auto;``` and set it to a table container class for use across the site (I encountered a similar problem on the article text on the Lookup page which has many sets of stats in tables). This allowed the table to have its own horizontal scrollbar and the card deck kept a uniform dimensions across different screen resolutions. This can be seen in this screenshot:
+    ![Scrollable table example](https://i.imgur.com/0StKmYi.png)
+    * **Testing/Bug 3** - The most prominent issue found with the Character and Quest features was an oversight in my UX. Upon trying to edit their entry, the edit form did not contain their previously entered values. The edit form simply had blank inputs with placeholder text, similar to the Add Character form, except with a different route/function connected to the Submit button.
+    * **Result** - To rectify this glaring UX issue, I found that the answer was frustratingly obvious. For the forms on the page, Jinja for/if loops are used to loop through any characters or quests found in the database and then ascertain if they belong to the user stored in the session cache. If this is found to be true, then their items data is populated onto the cards. The editing and deleting of these items is then handled by using each Character or Quests specific unique ID that is generated and assigned to it by MongoDB. Using this in the Jinja language of the HTML allowed me to ensure that the correllating values were being edited and also to replace ```placeholder="{{ character.character_name }}"``` with ```value="{{ character.character_name }}"```.
+    
+        Here is a sample of code for one of the edit form inputs that would demonstrates how the HTML is now written to display the stored values that are to be edited by the user:
+        ```
+        <form method="POST" action="{{ url_for('edit_character', character_id=character._id) }}">
+            <div class="form-group">
+                <label class="fancy-font" for="character_name">Character Name</label>
+                <input name="character_name" type="text" class="form-control form-item"
+                    id="edit_character_name{{character._id}}" value="{{ character.character_name }}" required />
+        </form>
+        ```
+        In addition, here is a screenshot where you can see in the edit form modal the stored values that match the ones from the original card on the site behind it:
+
+        ![Edit functionality example](https://i.imgur.com/URuESLH.png)
+
+
+
 
 ## Code Validation & Known Errors
 All HTML/CSS files for the site were formatted using [this free online formatter](https://www.freeformatter.com/html-formatter.html), then validated via [W3C Markup Validation Service](https://validator.w3.org/). The W3C check did spring some errors in the code but when checked through, they were all as a result of the bad functionality for validating Jinja Templating language, and any other errors were rectified.
+
+* RESUBMISSION NOTE JAN 2021 - I have since ran the rendered HTML code through the validators and not the template code, and have checked thoroughly that no errors remain as a result of the Jinja templating. 
 
 The app.py Python file was checked and verified as completely PEP8 compliant, using [this checker](http://pep8online.com/checkresult):
 ![Python pep8 screenshot](https://i.imgur.com/wAYKNJsl.png)
