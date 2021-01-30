@@ -108,8 +108,17 @@ Extensive debugging was done throughout development of the site, mainly using Ch
 
 ## Deployment
 Dungeon Club is deployed on Heroku, using a free account. To set up my project for deployment on Heroku, I followed this process:
+* A new requirements.txt file is needed and can be generated using 
+``` 
+pip freeze > requirements.txt
+```
+* Create a new file named Procfile (the capital P is crucial!) with no file extension, add the following to the file and save.
+``` 
+web: python app.py
+``` 
 * Login to/create account on Heroku and navigate to 'Create New App' on the dashboard.
 * Fill in the details for the new app, and select a server. 
+* Once created in Deploy > Deployment Method select GitHub and connect to the app GitHub repo.
 * The environment variables for the project are entered on the app settings. These include the MONGO_URI, and SECRET_KEY.
 * Navigate to the 'Deploy' section, and from that menu, link the existing GitHub repo master branch to the Heroku app and enable automatic deployment.
 
@@ -131,6 +140,15 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 > remote: Compressing objects: 100% (8/8), done.
 > remove: Total 10 (delta 1), reused 10 (delta 1)
 > Unpacking objects: 100% (10/10), done.
+```
+* Install required modules using the requirements.txt using: 
+```
+pip install -r requirements.txt
+```
+* Create a .env file and add the following variables to it, PORT, IP, MONGODB_URI, SECRET_KEY and give them their needed values.
+* Run your app with 
+```
+python3 app.py
 ```
 
 # Credits
