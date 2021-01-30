@@ -673,38 +673,51 @@
     <div class="container quest-form mb-4">
         <div class="row">
             <div class="col mt-4">
-                <h3 class="fancy-font">{{username}}'s Quests</h3>
+                <h3 class="fancy-font username">{{username}}'s Quests</h3>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <a class="btn quest-button" data-toggle="collapse" href="#questForm" role="button" aria-expanded="false" aria-controls="questForm">Add a new objective</a>
+                <button type="button" class="btn quest-button" data-toggle="modal" data-target="#questForm">Add a new objective</button>
             </div>
         </div>
-        <!-- ADD QUEST FORM -->
-        <div class="collapse mt-2" id="questForm">
-            <form method="POST" action="{{ url_for('add_quest') }}">
-                <div class="form-group">
-                    <label class="fancy-font" for="quest_name">Quest Title</label>
-                    <input name="quest_name" type="text" class="form-control form-item" id="quest_name" placeholder="Orc hunting" required />
+        <!-- ADD QUEST MODAL -->
+        <div class="modal fade" id="questForm" tabindex="-1" role="dialog" aria-labelledby="addQuestTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title heading" id="addQuestTitle">New Quest</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{ url_for('add_quest') }}">
+                            <div class="form-group">
+                                <label class="fancy-font" for="quest_name">Quest Title</label>
+                                <input name="quest_name" type="text" class="form-control form-item" id="quest_name" placeholder="Orc hunting"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <label class="fancy-font" for="quest_description">Description</label>
+                                <textarea rows="2" name="quest_description" class="form-control form-item" id="quest_description"
+                                    placeholder="The ruthless Orcs have been pillaging their way up and down the Sword Coast, lets go get em!"
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="fancy-font" for="quest_rewards">Rewards</label>
+                                <input name="quest_rewards" type="text" class="form-control form-item" id="quest_rewards"
+                                    placeholder="80 gold each and some other jobs in the future." />
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="submit">Add quest</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="fancy-font" for="quest_description">Description</label>
-                    <textarea
-                        rows="2"
-                        name="quest_description"
-                        class="form-control form-item"
-                        id="quest_description"
-                        placeholder="The ruthless Orcs have been pillaging their way up and down the Sword Coast, lets go get em!"
-                        required
-                    ></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="fancy-font" for="quest_rewards">Rewards</label>
-                    <input name="quest_rewards" type="text" class="form-control form-item" id="quest_rewards" placeholder="80 gold each and some other jobs in the future." />
-                </div>
-                <button class="btn btn-secondary" type="submit">Add quest</button>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -721,28 +734,52 @@
                             <a class="btn fancy-font quest_name" data-toggle="collapse" href="#target{{quest._id}}" data-target="#target{{quest._id}}" aria-controls="target{{quest._id}}" aria-expanded="false">
                                 {{ quest.quest_name }}<i class="btn fas fa-angle-double-down"></i>
                             </a>
-                            <a data-toggle="collapse" href="#edit{{quest._id}}" role="button" aria-expanded="false" aria-controls="questForm" class="btn edit-button">Edit</a>
+                            <button type="button" data-toggle="modal" data-target="#edit{{quest._id}}" class="btn edit-button">Edit</button>
                             <a href="{{ url_for('delete_quest', quest_id=quest._id) }}" class="btn delete-button">Delete</a>
                         </h5>
                     </div>
 
-                    <!-- EDIT QUEST FORM -->
+                    <!-- EDIT QUEST MODAL -->
+                    <div class="modal fade" id="edit{{quest._id}}" tabindex="-1" role="dialog" aria-labelledby="editQuestTitle"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title heading" id="editQuestTitle">Edit Quest</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{{ url_for('edit_quest', quest_id=quest._id) }}">
+                                        <div class="form-group">
+                                            <label class="fancy-font" for="quest_name">New Quest Title</label>
+                                            <input name="quest_name" type="text" class="form-control form-item" id="edit_quest_name{{quest._id}}"
+                                                value="{{ quest.quest_name }}" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="fancy-font" for="quest_description">New Description</label>
+                                            <textarea rows="2" name="quest_description" class="form-control form-item"
+                                                id="edit_quest_description{{quest._id}}" required>{{ quest.quest_description }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="fancy-font" for="quest_rewards">New Rewards</label>
+                                            <input name="quest_rewards" type="text" class="form-control form-item" id="edit_quest_rewards{{quest._id}}"
+                                                value="{{ quest.quest_rewards }}" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" type="submit">Edit quest</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <div class="card-body collapse mt-2" id="edit{{quest._id}}">
-                        <form method="POST" action="{{ url_for('edit_quest', quest_id=quest._id) }}">
-                            <div class="form-group">
-                                <label class="fancy-font" for="quest_name">New Quest Title</label>
-                                <input name="quest_name" type="text" class="form-control form-item" id="edit_quest_name{{quest._id}}" value="{{ quest.quest_name }}" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="fancy-font" for="quest_description">New Description</label>
-                                <textarea rows="2" name="quest_description" class="form-control form-item" id="edit_quest_description{{quest._id}}" required>{{ quest.quest_description }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="fancy-font" for="quest_rewards">New Rewards</label>
-                                <input name="quest_rewards" type="text" class="form-control form-item" id="edit_quest_rewards{{quest._id}}" value="{{ quest.quest_rewards }}" />
-                            </div>
-                            <button class="btn btn-secondary" type="submit">Edit quest</button>
-                        </form>
+                        
                     </div>
 
                     <!-- DISPLAY QUEST -->
