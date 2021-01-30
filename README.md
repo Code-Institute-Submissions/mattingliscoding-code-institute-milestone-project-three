@@ -10,7 +10,7 @@
 
 The goal of this site, as a huge fan and player/DM of Dungeon's and Dragons (D&D), is to create something that I felt would be really handy and beneficial to supplement the game's experience. 
 
-Dungon Club allows the user to achieve the following:
+Dungeon Club allows the user to achieve the following:
 * Quickly look up Character Races/Classes/Spells and other rules/information, via a dataset created from the official D&D SRD. This is a free-use document for the creation of content based around the subject of D&D. 
 * Choose from a list of official Source/Campaign books, with cover art, descriptions and links to purchase.
 * Sign up for a secure account to gain access to a Profile area. This profile allows the user to create quick cards for all the characters for their games, and also a Quest To-Do list, to keep track of their in-game objectives. The site also has functionality to securely delete their account as they see fit.
@@ -32,21 +32,21 @@ The dataset for this project is stored in a MongoDB Cluster, with 7 collections 
 ## Collections relevant to the game (D&D)
 * **Races, Classes & Spells** - These collections are used in the 5th Edition Database Lookup page, where the user would go to find information to aid them in their playing or running the game of D&D. They are unrelated to the user's data and are publicly accessible with no authentication needed. The data is called via PyMongo and the Jinja templating language to populate the card on the page dynamically. You can see an example of the usage of this in this image: 
 
-    ![Image of databse code example](https://i.imgur.com/4NaV4Js.png)
+    ![Image of database code example](https://i.imgur.com/4NaV4Js.png)
 
 * **Books** - This dataset is purely standalone, and meant as a separate resource for players to see products available for the game, with details on pricing and a link to purchase.
 
 ## Collections relevant to the user
 
 * **Users** - The user collection utilises password hashing via the security package installed with Werkzeug in Python. The two imported Werkzeug functions (generate_password_hash and check_password_hash) provide secure user authentication by storing secure passwords with salted hashes and later verifying an entered user password in plaintext against it's password hash to authenticate user.
-In addition, via a Jinja loop, the User's "created_by" value is compared against the session.user result (session being a function imported from Flask) in order to ensure the custom Characters and Quests correllate and are showing to the correct user.
+In addition, via a Jinja loop, the User's "created_by" value is compared against the session.user result (session being a function imported from Flask) in order to ensure the custom Characters and Quests correlate and are showing to the correct user.
 
 * **Characters & Quests** - The data in these collections are what the User is responsible for the addition, alteration and deletion of on the site and as such, this feature ensures that the Dungeon Club site can be considered as a CRUD project. As stated before, the "created_by" field is crucial in ensuring the User is being displayed the correct content they have created.
 
 # Features
 * **Navigation bar, with brand and page links (All pages)** - This header was created using Bootstrap, and gives the user a clear point of navigation control and is focused on ease-of-use. The collapse feature from Bootstrap also features heavily across the site, helping to keep the site expandable and accessible on smaller screens.
 * **Hero Image (All pages)** - The consistent use of the 'hero' banner across the pages helps the site feel fluid and light-weight, by letting the user become accustomed to the familiar UI across all the pages.
-* **Cards (All pages)** - The card and shadow classes from Bootstrap 4 adds a sense of dynamicism and depth to the UI, while also engaging in the 'Material' style of web design.
+* **Cards (All pages)** - The card and shadow classes from Bootstrap 4 adds a sense of dynamics and depth to the UI, while also engaging in the 'Material' style of web design.
 * **Home Page - News Section** - Links to current news in the sphere of D&D keep the site feeling up-to-date and alive.
 * **5th Edition Database Page** - The sidebar menu drops down smoothly and intuitively, so as to not let the user get lost or confused in the longer menus. The list items in the menu are colour coded when hovered over or focused on to also help the user. On smaller screens, the menu changes to a middle position for smooth ease-of-use.
 * **5th Edition Database Page - Data Populated Card** - The selection from the menu is triggering the respective function inside the Python app file, using Flask to query the database. The card on screen is then populated via loops using the Jinja templating language to display the stored information from the MongoDB collection for the chosen document.
@@ -79,7 +79,7 @@ Also in the future, I would like to add a public messageboard/forum application 
 
 ## User Stories & Feature Testing
 * **Expected** - As a user of Dungeon Club, I would like to quickly navigate through the 5E Lookup menu to pull up the information I need for my game.
-    * **Testing/Bugs** - Initially, the cascading drop-down had issues with regards to the growing complexity of the id's and data-targets required by the Bootstap Collapse functionality. Leading to the user would click to open one drop-down and none of the others would automatically close, leading to a bloated and confusing menu. 
+    * **Testing/Bugs** - Initially, the cascading drop-down had issues with regards to the growing complexity of the id's and data-targets required by the Bootstrap Collapse functionality. Leading to the user would click to open one drop-down and none of the others would automatically close, leading to a bloated and confusing menu. 
     * **Result** - User is able to navigate using the drop-down menu on desktop (left of screen) and mobile screen (top of screen) sizes and select the entry they wish to have displayed. 
 * **Expected** - As a user, I would like the process of making an account be simple and secure.
     * **Testing** - Werkzeug Security provides safe hashing for password protection and therefore, when a new user clicks the register button and fills in the information, their account is created in the MongoDB users collection complete with secure password.
@@ -112,7 +112,7 @@ Also in the future, I would like to add a public messageboard/forum application 
 
         ![Scrollable table example](https://i.imgur.com/0StKmYi.png)
     * **Testing/Bug 3** - The most prominent issue found with the Character and Quest features was an oversight in my UX. Upon trying to edit their entry, the edit form did not contain their previously entered values. The edit form simply had blank inputs with placeholder text, similar to the Add Character form, except with a different route/function connected to the Submit button.
-    * **Result** - To rectify this glaring UX issue, I found that the answer was frustratingly obvious. For the forms on the page, Jinja for/if loops are used to loop through any characters or quests found in the database and then ascertain if they belong to the user stored in the session cache. If this is found to be true, then their items data is populated onto the cards. The editing and deleting of these items is then handled by using each Character or Quests specific unique ID that is generated and assigned to it by MongoDB. Using this in the Jinja language of the HTML allowed me to ensure that the correllating values were being edited and also to replace ```placeholder="{{ character.character_name }}"``` with ```value="{{ character.character_name }}"```.
+    * **Result** - To rectify this glaring UX issue, I found that the answer was frustratingly obvious. For the forms on the page, Jinja for/if loops are used to loop through any characters or quests found in the database and then ascertain if they belong to the user stored in the session cache. If this is found to be true, then their items data is populated onto the cards. The editing and deleting of these items is then handled by using each Character or Quests specific unique ID that is generated and assigned to it by MongoDB. Using this in the Jinja language of the HTML allowed me to ensure that the correlating values were being edited and also to replace ```placeholder="{{ character.character_name }}"``` with ```value="{{ character.character_name }}"```.
     
         Here is a sample of code for one of the edit form inputs that would demonstrates how the HTML is now written to display the stored values that are to be edited by the user:
         ```
