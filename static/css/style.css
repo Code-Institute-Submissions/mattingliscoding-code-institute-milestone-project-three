@@ -25,6 +25,11 @@ main {
     font-family: "Crimson Text", serif;
 }
 
+.username{
+    text-transform: capitalize;
+}
+
+
 .heading {
     font-family: "Ubuntu", sans-serif;
     font-weight: 700;
