@@ -79,8 +79,8 @@ Also in the future, I would like to add a public messageboard/forum application 
 
 ## User Stories & Feature Testing
 * **Expected** - As a user of Dungeon Club, I would like to quickly navigate through the 5E Lookup menu to pull up the information I need for my game.
-    * **Testing/Bugs** - Initially, the cascading drop-down had issues with regards to the growing complexity of the id's and data-targets required by the Bootstrap Collapse functionality. Leading to the user would click to open one drop-down and none of the others would automatically close, leading to a bloated and confusing menu. 
-    * **Result** - User is able to navigate using the drop-down menu on desktop (left of screen) and mobile screen (top of screen) sizes and select the entry they wish to have displayed. 
+    * **Testing** - Initially, the cascading drop-down had issues with regards to the growing complexity of the id's and data-targets required by the Bootstrap Collapse functionality. The submenus were all the same width and the menu drop-down headings were not coloured to differentiate. The menu system fast became unwieldy and was slightly fatiguing for a user.
+    * **Result** - User is able to navigate using the drop-down menu on desktop (left of screen) and mobile screen (top of screen) sizes and select the entry they wish to have displayed. The fix to clean up the UX of the menu was to use a highlighting colour for the menu category that the user has opened, and the sub-menus decreasing in width the further down through the menu structure the user goes.
 * **Expected** - As a user, I would like the process of making an account be simple and secure.
     * **Testing** - Werkzeug Security provides safe hashing for password protection and therefore, when a new user clicks the register button and fills in the information, their account is created in the MongoDB users collection complete with secure password.
     With regards to secure account deletion, the session functionality from Flask allows for easy removal of accounts using a function that checks the session.user is correct and they are allowed to continue with the account deletion:
